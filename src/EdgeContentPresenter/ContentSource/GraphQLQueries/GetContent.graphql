@@ -40,6 +40,17 @@
           ...contentCommon
         }
       }
+      pageHeader: cmpContentToLinkedAsset(
+        where: {
+          presentationAssets: {
+            presentationAssets_ids: "PresentationAssets.PageHeader"
+          }
+        }
+      ) {
+        results {
+          urls
+        }
+      }
     }
     ... on M_Content_Blog {
       blog_Title

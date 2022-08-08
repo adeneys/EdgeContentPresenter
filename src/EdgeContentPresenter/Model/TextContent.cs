@@ -9,5 +9,7 @@ namespace EdgeContentPresenter.Model
 
         [JsonPropertyName("text_Text")]
         public string Text { get; set; }
+
+        public string PageHeaderImageUrl { get; set; }
     }
 }

@@ -76,27 +76,30 @@ namespace EdgeContentPresenter.ContentSource
         private Content? DeserializeTextContent(JsonElement element, string type)
         {
             var result = Deserialize<TextContent>(element, type);
+            result.PageHeaderImageUrl = ResolveImageUrl(element, "pageHeader");
             result.NextContentIdentifier = ResolveNextContentIdentifier(element, "reference_Text_Next_Parents");
             return result;
         }
 
         private string? ResolvePrimaryImageUrl(JsonElement element)
         {
-            var masterAssetList = element
-                .GetProperty("cmpContentToMasterLinkedAsset")
+            var url = ResolveImageUrl(element, "cmpContentToMasterLinkedAsset");
+
+            if(string.IsNullOrEmpty(url))
+                url = ResolveImageUrl(element, "cmpContentToLinkedAsset");
+
+            return url;
+        }
+
+        private string? ResolveImageUrl(JsonElement element, string relationName)
+        {
+            var assetList = element
+                .GetProperty(relationName)
                 .GetProperty("results")
                 .EnumerateArray();
 
-            if (masterAssetList.Any())
-                return ResolveImageUrl(masterAssetList.First());
-
-            var linkedAssetList = element
-                .GetProperty("cmpContentToLinkedAsset")
-                .GetProperty("results")
-                .EnumerateArray();
-
-            if (linkedAssetList.Any())
-                return ResolveImageUrl(linkedAssetList.First());
+            if (assetList.Any())
+                return ResolveImageUrl(assetList.First());
 
             return null;
         }

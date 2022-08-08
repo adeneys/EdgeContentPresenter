@@ -4,19 +4,25 @@
              x:Class="EdgeContentPresenter.ContentTypes.TextContentPage"
              Title="{Binding Title}"
              BackgroundColor="{DynamicResource White}">
-    <VerticalStackLayout
-        Spacing="15"
-        Margin="25"
-        >
-        <Label 
-            Text="{Binding Title}"
-            Style="{DynamicResource Text-Title}"
+    <AbsoluteLayout>
+        <Image 
+            Source="{Binding PageHeaderImageUrl}"
+            Aspect="AspectFill"
             />
 
-        <Label 
-            Text="{Binding Text}"
-            TextType="Html"
-            Style="{DynamicResource Text-Text}"
-            />
-    </VerticalStackLayout>
+        <VerticalStackLayout
+            Spacing="15"
+            Margin="25">
+            <Label 
+                Text="{Binding Title}"
+                Style="{DynamicResource Text-Title}"
+                />
+
+            <Label 
+                Text="{Binding Text}"
+                TextType="Html"
+                Style="{DynamicResource Text-Text}"
+                />
+        </VerticalStackLayout>
+    </AbsoluteLayout>
 </ContentPage>
