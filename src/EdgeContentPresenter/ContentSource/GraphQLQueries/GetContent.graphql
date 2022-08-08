@@ -1,0 +1,67 @@
+﻿query($id: String!) {
+  m_Content(id: $id) {
+    ...contentCommon
+    ... on M_Content_Title {
+      title_Title
+      title_Author
+      title_Date
+      title_HashTags
+      reference_Title_Next_Parents(first: 1) {
+        results {
+          ...contentCommon
+        }
+      }
+    }
+    ... on M_Content_Bio {
+      bio_Title
+      bio_Name
+      bio_JobTitle
+      bio_Highlights
+      bio_Twitter
+      reference_Bio_Next_Parents(first: 1) {
+        results {
+          ...contentCommon
+        }
+      }
+    }
+    ... on M_Content_SectionTitle {
+      sectionTitle_Title
+      reference_SectionTitle_Next_Parents(first: 1) {
+        results {
+          ...contentCommon
+        }
+      }
+    }
+    ... on M_Content_Text {
+      text_Title
+      text_Text
+      reference_Text_Next_Parents(first: 1) {
+        results {
+          ...contentCommon
+        }
+      }
+    }
+    ... on M_Content_Blog {
+      blog_Title
+      blog_Quote
+      blog_Body
+    }
+  }
+}
+
+fragment contentCommon on IM_Content {
+  id
+  contentTypeToContent {
+    id
+  }
+  cmpContentToMasterLinkedAsset(first: 1) {
+    results {
+      urls
+    }
+  }
+  cmpContentToLinkedAsset(first: 1) {
+    results {
+      urls
+    }
+  }
+}

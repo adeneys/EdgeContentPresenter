@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="EdgeContentPresenter.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:EdgeContentPresenter"
+    Shell.FlyoutBehavior="Disabled">
+
+    <Shell.ToolbarItems>
+
+        <ToolbarItem
+            Text="Forward"
+            IconImageSource="arrow_right.png"
+            Clicked="NextPage" />
+
+        <ToolbarItem
+            Text="Settings"
+            IconImageSource="gearwheel.png"
+            Clicked="OpenSettings" />
+
+    </Shell.ToolbarItems>
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+</Shell>

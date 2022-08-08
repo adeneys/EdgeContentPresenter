@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EdgeContentPresenter.ContentTypes.BioContentPage"
+             Title="{Binding Title}"
+             BackgroundColor="{DynamicResource White}">
+
+    <HorizontalStackLayout>
+        <Image 
+            Source="{Binding ImageUrl}"
+            MaximumHeightRequest="700" />
+        
+        <VerticalStackLayout
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            Margin="25"
+            Spacing="15">
+            
+            <Label 
+                Text="{Binding Name}"
+                Style="{DynamicResource Bio-Name}"
+                />
+
+            <Label 
+                Text="{Binding JobTitle}"
+                Style="{DynamicResource Bio-JobTitle}"
+                />
+
+            <Label 
+                Text="{Binding Highlights}"
+                Style="{DynamicResource Bio-Highlights}"
+                TextType="Html"
+                />
+
+            <Label 
+                Text="{Binding Twitter, StringFormat='@{0}'}"
+                Style="{DynamicResource Bio-Twitter}"
+                />
+        </VerticalStackLayout>
+    </HorizontalStackLayout>
+
+
+
+</ContentPage>

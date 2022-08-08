@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EdgeContentPresenter.SettingsPage"
+             Title="Settings">
+    <ContentPage.Content>
+        <VerticalStackLayout>
+            <VerticalStackLayout
+                MaximumWidthRequest="700"
+                Margin="25"
+                Spacing="25"
+                HorizontalOptions="Center">
+
+                <Label Text="Edge URL"/>
+                <Entry x:Name="url"/>
+
+                <Label Text="X-GQL-Token"/>
+                <Entry x:Name="token" IsPassword="True"/>
+
+                <Label Text="Title identifier"/>
+                <Entry x:Name="startIdentifier"/>
+
+                <Button Text="Save" WidthRequest="200" Clicked="SaveSettings"/>
+
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>
