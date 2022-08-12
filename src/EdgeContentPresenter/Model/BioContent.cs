@@ -19,6 +19,8 @@ namespace EdgeContentPresenter.Model
         [JsonPropertyName("bio_Twitter")]
         public string Twitter { get; set; }
 
+        public string PageHeaderImageUrl { get; set; }
+
         public string ImageUrl { get; set; }
     }
 }

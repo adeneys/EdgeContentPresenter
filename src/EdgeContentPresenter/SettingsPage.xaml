@@ -9,7 +9,9 @@
                 MaximumWidthRequest="700"
                 Margin="25"
                 Spacing="25"
-                HorizontalOptions="Center">
+                Padding="25"
+                HorizontalOptions="Center"
+                BackgroundColor="{DynamicResource White}">
 
                 <Label Text="Edge URL"/>
                 <Entry x:Name="url"/>

@@ -61,6 +61,7 @@ namespace EdgeContentPresenter.ContentSource
         {
             var result = Deserialize<BioContent>(element, type);
             result.ImageUrl = ResolvePrimaryImageUrl(element);
+            result.PageHeaderImageUrl = ResolveImageUrl(element, "pageHeader");
             result.NextContentIdentifier = ResolveNextContentIdentifier(element, "reference_Bio_Next_Parents");
             return result;
         }

@@ -71,8 +71,8 @@
 	  <Compile Update="ContentTypes\BlogContentPage.xaml.cs">
 	    <DependentUpon>BlogContentPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="ContentTypes\SectionTitlePage.xaml.cs">
-	    <DependentUpon>SectionTitlePage.xaml</DependentUpon>
+	  <Compile Update="ContentTypes\SectionTitlePageLeft.xaml.cs">
+	    <DependentUpon>SectionTitlePageLeft.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -83,7 +83,13 @@
 	  <MauiXaml Update="ContentTypes\BlogContentPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="ContentTypes\SectionTitlePage.xaml">
+	  <MauiXaml Update="ContentTypes\SectionSubtitlePageLeft.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ContentTypes\SectionSubtitlePageRight.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ContentTypes\SectionTitlePageLeft.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="ContentTypes\TextContentPage.xaml">

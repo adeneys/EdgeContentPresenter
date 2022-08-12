@@ -23,9 +23,12 @@
           ...contentCommon
         }
       }
+      ...pageHeader
     }
     ... on M_Content_SectionTitle {
       sectionTitle_Title
+      sectionTitle_Subtitle
+      sectionTitle_Layout
       reference_SectionTitle_Next_Parents(first: 1) {
         results {
           ...contentCommon
@@ -40,17 +43,7 @@
           ...contentCommon
         }
       }
-      pageHeader: cmpContentToLinkedAsset(
-        where: {
-          presentationAssets: {
-            presentationAssets_ids: "PresentationAssets.PageHeader"
-          }
-        }
-      ) {
-        results {
-          urls
-        }
-      }
+      ...pageHeader
     }
     ... on M_Content_Blog {
       blog_Title
@@ -71,6 +64,20 @@ fragment contentCommon on IM_Content {
     }
   }
   cmpContentToLinkedAsset(first: 1) {
+    results {
+      urls
+    }
+  }
+}
+
+fragment pageHeader on IM_Content {
+  pageHeader: cmpContentToLinkedAsset(
+    where: {
+      presentationAssets: {
+        presentationAssets_ids: "PresentationAssets.PageHeader"
+      }
+    }
+  ) {
     results {
       urls
     }

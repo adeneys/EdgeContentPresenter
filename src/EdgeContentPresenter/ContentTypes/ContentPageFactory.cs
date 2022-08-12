@@ -14,7 +14,9 @@ namespace EdgeContentPresenter.ContentTypes
                 BlogContent => new BlogContentPage(),
                 TitleContent => new TitleContentPage(),
                 BioContent => new BioContentPage(),
-                SectionTitleContent => new SectionTitlePage(),
+                SectionTitleContent sectionTitleContent when sectionTitleContent.Layout == "SectionTitleLayout.LeftSubtitle" => new SectionSubtitlePageLeft(),
+                SectionTitleContent sectionTitleContent when sectionTitleContent.Layout == "SectionTitleLayout.RightSubtitle" => new SectionSubtitlePageRight(),
+                SectionTitleContent => new SectionTitlePageLeft(),
                 TextContent => new TextContentPage(),
                 _ => null
             };

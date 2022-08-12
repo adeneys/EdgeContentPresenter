@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EdgeContentPresenter.ContentTypes.TitleContentPage"
+             x:Class="EdgeContentPresenter.ContentTypes.SectionSubtitlePageRight"
              Title="{Binding Title}">
-
+    
     <AbsoluteLayout>
         <Image 
             Source="{Binding BackgroundImageUrl}"
@@ -16,26 +16,22 @@
             AbsoluteLayout.LayoutFlags="All">
 
             <VerticalStackLayout
-                Margin="20"
-                Spacing="15"
-                VerticalOptions="Center"
-                MaximumWidthRequest="700">
-
+                Margin="75"
+                Spacing="25"
+                HorizontalOptions="End">
+                
                 <Label 
                     Text="{Binding Title}"
-                    Style="{DynamicResource Title-Title}" />
+                    Style="{DynamicResource SectionTitle-Title}"
+                    WidthRequest="700"
+                    HorizontalOptions="End" />
 
                 <Label 
-                    Text="{Binding Author}"
-                    Style="{DynamicResource Title-Author}" />
-
-                <Label 
-                    Text="{Binding Date}"
-                    Style="{DynamicResource Title-Date}" />
-
-                <Label 
-                    Text="{Binding HashTags}"
-                    Style="{DynamicResource Title-Hashtags}" />
+                    Text="{Binding Subtitle}"
+                    Style="{DynamicResource SectionTitle-Subtitle}"
+                    WidthRequest="700"
+                    HorizontalOptions="End"
+                    HorizontalTextAlignment="End" />
 
             </VerticalStackLayout>
         </ScrollView>
