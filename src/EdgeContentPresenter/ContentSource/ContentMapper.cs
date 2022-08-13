@@ -5,6 +5,8 @@ namespace EdgeContentPresenter.ContentSource
 {
     internal class ContentMapper : IContentMapper
     {
+        private const string HeaderAssetTypeId = "PresentationAssets.PageHeader";
+
         public Content? MapContentResponse(string content)
         {
             var json = JsonDocument.Parse(content);
@@ -61,7 +63,7 @@ namespace EdgeContentPresenter.ContentSource
         {
             var result = Deserialize<BioContent>(element, type);
             result.ImageUrl = ResolvePrimaryImageUrl(element);
-            result.PageHeaderImageUrl = ResolveImageUrl(element, "pageHeader");
+            result.PageHeaderImageUrl = ResolveImageUrl(element, "pageHeader", null, null);
             result.NextContentIdentifier = ResolveNextContentIdentifier(element, "reference_Bio_Next_Parents");
             return result;
         }
@@ -77,22 +79,23 @@ namespace EdgeContentPresenter.ContentSource
         private Content? DeserializeTextContent(JsonElement element, string type)
         {
             var result = Deserialize<TextContent>(element, type);
-            result.PageHeaderImageUrl = ResolveImageUrl(element, "pageHeader");
+            result.PageHeaderImageUrl = ResolveImageUrl(element, "pageHeader", null, null);
+            result.MainImageUrl = ResolvePrimaryImageUrl(element);
             result.NextContentIdentifier = ResolveNextContentIdentifier(element, "reference_Text_Next_Parents");
             return result;
         }
 
         private string? ResolvePrimaryImageUrl(JsonElement element)
         {
-            var url = ResolveImageUrl(element, "cmpContentToMasterLinkedAsset");
+            var url = ResolveImageUrl(element, "cmpContentToMasterLinkedAsset", null, null);
 
             if(string.IsNullOrEmpty(url))
-                url = ResolveImageUrl(element, "cmpContentToLinkedAsset");
+                url = ResolveImageUrl(element, "cmpContentToLinkedAsset", null, HeaderAssetTypeId);
 
             return url;
         }
 
-        private string? ResolveImageUrl(JsonElement element, string relationName)
+        private string? ResolveImageUrl(JsonElement element, string relationName, string includePresentationAsset, string excludePresentationAsset)
         {
             var assetList = element
                 .GetProperty(relationName)
@@ -100,9 +103,53 @@ namespace EdgeContentPresenter.ContentSource
                 .EnumerateArray();
 
             if (assetList.Any())
-                return ResolveImageUrl(assetList.First());
+            {
+                // Find first asset that satisfies the include & exclude parameters
+                foreach (var asset in assetList)
+                {
+                    var types = ResolveAssetPresentationType(asset);
+
+                    if(!string.IsNullOrEmpty(includePresentationAsset))
+                    {
+                        if (types.All(x => x != includePresentationAsset))
+                            continue;
+                    }
+
+                    if (!string.IsNullOrEmpty(excludePresentationAsset))
+                    {
+                        if (types.Any(x => x == excludePresentationAsset))
+                            continue;
+                    }
+
+                    return ResolveImageUrl(asset);
+                }
+            }
 
             return null;
+        }
+
+        private IList<string> ResolveAssetPresentationType(JsonElement element)
+        {
+            var types = new List<string>();
+
+            if(!element.TryGetProperty("presentationAssets", out var presentationAssetsElement))
+                return types;
+
+            var presentationAssets = presentationAssetsElement
+                .GetProperty("results")
+                .EnumerateArray();
+
+            foreach (var type in presentationAssets)
+            {
+                var presentationAssetId = type
+                    .GetProperty("id")
+                    .GetString();
+
+                if (!string.IsNullOrEmpty(presentationAssetId))
+                    types.Add(presentationAssetId);
+            }
+
+            return types;
         }
 
         private string? ResolveImageUrl(JsonElement element)

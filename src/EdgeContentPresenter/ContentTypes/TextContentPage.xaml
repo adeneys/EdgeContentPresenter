@@ -11,17 +11,25 @@
             Aspect="AspectFill" />
 
         <VerticalStackLayout
-            Spacing="15"
-            Margin="25">
+            Spacing="25"
+            Margin="25"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All">
             
             <Label 
                 Text="{Binding Title}"
-                Style="{DynamicResource Page-Title}" />
+                Style="{DynamicResource Page-Title}"
+                HorizontalOptions="Start" />
 
             <Label 
                 Text="{Binding Text}"
                 TextType="Html"
                 Style="{DynamicResource Text-Text}" />
+
+            <Image 
+                Source="{Binding MainImageUrl}"
+                HorizontalOptions="Center"
+                Aspect="Center" />
 
         </VerticalStackLayout>
     </AbsoluteLayout>

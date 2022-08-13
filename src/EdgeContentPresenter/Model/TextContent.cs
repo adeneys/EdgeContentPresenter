@@ -11,5 +11,7 @@ namespace EdgeContentPresenter.Model
         public string Text { get; set; }
 
         public string PageHeaderImageUrl { get; set; }
+
+        public string MainImageUrl { get; set; }
     }
 }

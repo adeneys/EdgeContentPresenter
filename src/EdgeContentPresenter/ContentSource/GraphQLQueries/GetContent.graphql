@@ -58,14 +58,19 @@ fragment contentCommon on IM_Content {
   contentTypeToContent {
     id
   }
-  cmpContentToMasterLinkedAsset(first: 1) {
+  cmpContentToMasterLinkedAsset {
     results {
       urls
     }
   }
-  cmpContentToLinkedAsset(first: 1) {
+  cmpContentToLinkedAsset {
     results {
       urls
+      presentationAssets {
+        results {
+          id
+        }
+      }
     }
   }
 }
