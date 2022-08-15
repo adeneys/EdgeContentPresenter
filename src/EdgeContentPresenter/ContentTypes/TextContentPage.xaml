@@ -10,27 +10,32 @@
             Source="{Binding PageHeaderImageUrl}"
             Aspect="AspectFill" />
 
-        <VerticalStackLayout
-            Spacing="25"
-            Margin="25"
+        <ScrollView 
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All">
             
-            <Label 
-                Text="{Binding Title}"
-                Style="{DynamicResource Page-Title}"
-                HorizontalOptions="Start" />
+            <VerticalStackLayout
+                Spacing="25"
+                Margin="25"
+                VerticalOptions="Center">
 
-            <Label 
-                Text="{Binding Text}"
-                TextType="Html"
-                Style="{DynamicResource Text-Text}" />
+                <Label 
+                    Text="{Binding Title}"
+                    Style="{DynamicResource Page-Title}"
+                    HorizontalOptions="Start" />
 
-            <Image 
-                Source="{Binding MainImageUrl}"
-                HorizontalOptions="Center"
-                Aspect="Center" />
+                <Label 
+                    Text="{Binding Text}"
+                    TextType="Html"
+                    Style="{DynamicResource Text-Text}" />
 
-        </VerticalStackLayout>
+                <Image 
+                    Source="{Binding MainImageUrl}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Aspect="Center" />
+
+            </VerticalStackLayout>
+        </ScrollView>
     </AbsoluteLayout>
 </ContentPage>

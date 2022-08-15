@@ -167,59 +167,59 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}" />
         <Setter Property="FontFamily" Value="OpenSansSemibold" />
         <Setter Property="FontAttributes" Value="Bold"/>
-        <Setter Property="FontSize" Value="56" />
+        <Setter Property="FontSize" Value="78" />
     </Style>
 
     <Style TargetType="Label" x:Key="Title-Author">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
         <Setter Property="FontAttributes" Value="Bold"/>
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="38" />
     </Style>
 
     <Style TargetType="Label" x:Key="Title-Date">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="38" />
     </Style>
 
     <Style TargetType="Label" x:Key="Title-Hashtags">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}" />
         <Setter Property="FontFamily" Value="OpenSansSemibold" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="38" />
     </Style>
 
     <Style TargetType="Label" x:Key="Page-Title">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}" />
-        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
         <Setter Property="FontAttributes" Value="Bold"/>
-        <Setter Property="FontSize" Value="32" />
+        <Setter Property="FontSize" Value="38" />
     </Style>
 
     <Style TargetType="Label" x:Key="Bio-Name">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" />
         <Setter Property="FontFamily" Value="OpenSansSemibold" />
         <Setter Property="FontAttributes" Value="Bold"/>
-        <Setter Property="FontSize" Value="40" />
+        <Setter Property="FontSize" Value="56" />
     </Style>
 
     <Style TargetType="Label" x:Key="Bio-JobTitle">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
         <Setter Property="FontAttributes" Value="Bold"/>
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="36" />
     </Style>
 
     <Style TargetType="Label" x:Key="Bio-Highlights">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
-        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontSize" Value="42" />
     </Style>
 
     <Style TargetType="Label" x:Key="Bio-Twitter">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
-        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontSize" Value="42" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Blue100Accent}, Dark={StaticResource Blue100Accent}}" />
     </Style>
 
@@ -227,19 +227,19 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}" />
         <Setter Property="FontFamily" Value="OpenSansSemibold" />
         <Setter Property="FontAttributes" Value="Bold"/>
-        <Setter Property="FontSize" Value="48" />
+        <Setter Property="FontSize" Value="56" />
     </Style>
 
     <Style TargetType="Label" x:Key="SectionTitle-Subtitle">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}" />
-        <Setter Property="FontFamily" Value="OpenSansSemibold" />
-        <Setter Property="FontSize" Value="38" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="52" />
     </Style>
 
     <Style TargetType="Label" x:Key="Text-Text">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
-        <Setter Property="FontSize" Value="32" />
+        <Setter Property="FontSize" Value="42" />
     </Style>
 
     <Style TargetType="ListView">

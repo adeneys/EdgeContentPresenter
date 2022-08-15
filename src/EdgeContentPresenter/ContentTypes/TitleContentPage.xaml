@@ -17,9 +17,11 @@
 
             <VerticalStackLayout
                 Margin="20"
+                Padding="50"
                 Spacing="15"
                 VerticalOptions="Center"
-                MaximumWidthRequest="700">
+                HorizontalOptions="Start"
+                MaximumWidthRequest="800">
 
                 <Label 
                     Text="{Binding Title}"

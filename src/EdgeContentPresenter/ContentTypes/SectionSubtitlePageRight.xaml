@@ -23,13 +23,13 @@
                 <Label 
                     Text="{Binding Title}"
                     Style="{DynamicResource SectionTitle-Title}"
-                    WidthRequest="700"
+                    MaximumWidthRequest="900"
                     HorizontalOptions="End" />
 
                 <Label 
                     Text="{Binding Subtitle}"
                     Style="{DynamicResource SectionTitle-Subtitle}"
-                    WidthRequest="700"
+                    MaximumWidthRequest="900"
                     HorizontalOptions="End"
                     HorizontalTextAlignment="End" />
 
