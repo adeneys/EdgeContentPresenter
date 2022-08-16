@@ -4,25 +4,26 @@
              x:Class="EdgeContentPresenter.ContentTypes.TextContentPage"
              Title="{Binding Title}"
              BackgroundColor="{DynamicResource White}">
-    
+
     <AbsoluteLayout>
         <Image 
             Source="{Binding PageHeaderImageUrl}"
             Aspect="AspectFill" />
 
+        <Label 
+            Text="{Binding Title}"
+            Style="{DynamicResource Page-Title}"
+            Margin="20"
+            HorizontalOptions="Start" />
+
         <ScrollView 
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All">
-            
+
             <VerticalStackLayout
                 Spacing="25"
                 Margin="25"
                 VerticalOptions="Center">
-
-                <Label 
-                    Text="{Binding Title}"
-                    Style="{DynamicResource Page-Title}"
-                    HorizontalOptions="Start" />
 
                 <Label 
                     Text="{Binding Text}"

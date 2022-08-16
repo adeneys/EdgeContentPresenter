@@ -33,7 +33,6 @@ namespace EdgeContentPresenter.ContentSource
                     CurrentPage = page;
                 }
 
-                
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentPage)));
             }
             catch (Exception ex)
