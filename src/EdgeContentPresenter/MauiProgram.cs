@@ -18,6 +18,7 @@ public static class MauiProgram
             });
 
         builder.Services.AddHttpClient();
+        builder.Services.AddMemoryCache();
 
         builder.Services.AddSingleton<IAppSettings, AppSettings>();
         builder.Services.AddSingleton<IContentMapper, ContentMapper>();
@@ -29,6 +30,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<SettingsPage>();
 
+        builder.Services.Decorate<IContentRepository, EdgeContentRepositoryCacheDecorator>();
         builder.Services.Decorate<IContentPageFactory, ContentPageFactoryCacheDecorator>();
         builder.Services.Decorate<IContentPageController, ContentPageControllerPreFetchDecorator>();
 

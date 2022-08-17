@@ -1,4 +1,5 @@
 ﻿using EdgeContentPresenter.Model;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace EdgeContentPresenter.ContentTypes
 {
@@ -8,23 +9,28 @@ namespace EdgeContentPresenter.ContentTypes
     internal class ContentPageFactoryCacheDecorator : IContentPageFactory
     {
         private readonly IContentPageFactory _inner;
-        private readonly Dictionary<string, Page> _cache;
+        private readonly IMemoryCache _cache;
 
-        public ContentPageFactoryCacheDecorator(IContentPageFactory inner)
+        public ContentPageFactoryCacheDecorator(IContentPageFactory inner, IMemoryCache cache)
         {
             _inner = inner;
-            _cache = new Dictionary<string, Page>();
+            _cache = cache;
         }
 
         public Page CreatePageForContent(Content content)
         {
-            if (_cache.ContainsKey(content.Identifier))
-                return _cache[content.Identifier];
+            var key = GenerateCacheKey(content.Identifier);
 
-            var page = _inner.CreatePageForContent(content);
-            _cache.Add(content.Identifier, page);
+            return _cache.GetOrCreate<Page>(key, entry =>
+            {
+                var page = _inner.CreatePageForContent(content);
+                return page;
+            });
+        }
 
-            return page;
+        private string GenerateCacheKey(string identifier)
+        {
+            return "page-" + identifier;
         }
     }
 }
