@@ -1,0 +1,22 @@
+﻿query GetNavigation($name: String) {
+    allNavigation(where: {
+    name_eq: $name
+  } ) {
+    results {
+      id
+      name
+      pages {
+        results {
+          ... on Title {
+            id
+            name
+          }
+          ... on Bio {
+            id
+            name
+          }
+        }
+      }
+    }
+  }
+}

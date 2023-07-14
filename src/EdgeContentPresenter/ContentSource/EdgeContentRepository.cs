@@ -10,7 +10,8 @@ namespace EdgeContentPresenter.ContentSource
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IContentMapper _contentMapper;
         
-        private string? _query = null;
+        private string? _contentQquery = null;
+        private string? _navigationQuery = null;
 
         public EdgeContentRepository(IAppSettings appSettings, IHttpClientFactory httpClientFactory, IContentMapper contentMapper)
         {
@@ -19,28 +20,42 @@ namespace EdgeContentPresenter.ContentSource
             _contentMapper = contentMapper;
         }
 
+        public async Task<IList<NavigablePage>> GetNavigationAsync(string name)
+        {
+            await EnsureQueryTextLoaded();
+
+            var queryRequest = new GraphQLRequest
+            {
+                Query = _navigationQuery,
+                Variables = new Dictionary<string, string>
+                {
+                    { "name", name }
+                }
+            };
+
+            using var response = await PostQuery(queryRequest);
+
+            if (!response.IsSuccessStatusCode)
+                throw new EdgeException($"Edge response was not success: {response.StatusCode}");
+
+            var contentJson = await response.Content.ReadAsStringAsync();
+            return _contentMapper.MapNavigationResponse(contentJson);
+        }
+
         public async Task<Content?> GetContentAsync(string identifier)
         {
             await EnsureQueryTextLoaded();
-            var xGqlToken = await _appSettings.GetXGqlTokenAsync();
-
-            var httpClient = _httpClientFactory.CreateClient();
-            httpClient.DefaultRequestHeaders.Add("X-GQL-Token", xGqlToken);
-
-            var edgeUrl = await _appSettings.GetEdgeUrlAsync();
-            var baseUri = new Uri(edgeUrl);
-            var uri = new Uri(baseUri, "/api/graphql/v1");
+            
             var queryRequest = new GraphQLRequest
             {
-                Query = _query,
+                Query = _contentQquery,
                 Variables = new Dictionary<string, string>
                 {
                     { "id", identifier }
                 }
             };
 
-            // todo: cancellation token
-            using var response = await httpClient.PostAsJsonAsync(uri, queryRequest);
+            using var response = await PostQuery(queryRequest);
 
             if (!response.IsSuccessStatusCode)
                 throw new EdgeException($"Edge response was not success: {response.StatusCode}");
@@ -51,13 +66,36 @@ namespace EdgeContentPresenter.ContentSource
 
         private async Task EnsureQueryTextLoaded()
         {
-            if (_query != null)
-                return;
+            if (_contentQquery == null)
+            {
+                using var stream = await FileSystem.OpenAppPackageFileAsync("ContentSource\\GraphQLQueries\\GetContent.graphql");
+                using var reader = new StreamReader(stream);
 
-            using var stream = await FileSystem.OpenAppPackageFileAsync("ContentSource\\GraphQLQueries\\GetContent.graphql");
-            using var reader = new StreamReader(stream);
+                _contentQquery = reader.ReadToEnd();
+            }
 
-            _query = reader.ReadToEnd();
+            if (_navigationQuery == null)
+            {
+                using var stream = await FileSystem.OpenAppPackageFileAsync("ContentSource\\GraphQLQueries\\GetNavigation.graphql");
+                using var reader = new StreamReader(stream);
+
+                _navigationQuery = reader.ReadToEnd();
+            }
+        }
+
+        private async Task<HttpResponseMessage> PostQuery(GraphQLRequest queryRequest)
+        {
+            var xGqlToken = await _appSettings.GetXGqlTokenAsync();
+
+            var httpClient = _httpClientFactory.CreateClient();
+            httpClient.DefaultRequestHeaders.Add("X-GQL-Token", xGqlToken);
+
+            var edgeUrl = await _appSettings.GetEdgeUrlAsync();
+            var baseUri = new Uri(edgeUrl);
+            var uri = new Uri(baseUri, "/api/graphql/v1");
+
+            // todo: cancellation token
+            return await httpClient.PostAsJsonAsync(uri, queryRequest);
         }
     }
 }

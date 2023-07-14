@@ -17,14 +17,14 @@ namespace EdgeContentPresenter
             base.OnNavigatedTo(args);
             url.Text = await _appSettings.GetEdgeUrlAsync();
             token.Text = await _appSettings.GetXGqlTokenAsync();
-            startIdentifier.Text = await _appSettings.GetTitleContentIdentifierAsync();
+            navigationName.Text = await _appSettings.GetNavigationNameAsync();
         }
 
         protected async void SaveSettings(object sender, EventArgs e)
         {
             await _appSettings.SetEdgeUrlAsync(url.Text);
             await _appSettings.SetXGqlTokenAsync(token.Text);
-            await _appSettings.SetTitleContentIdentifierAsync(startIdentifier.Text);
+            await _appSettings.SetNavigationNameAsync(navigationName.Text);
         }
     }
 }

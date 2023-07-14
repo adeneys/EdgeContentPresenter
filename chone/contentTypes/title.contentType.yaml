@@ -1,0 +1,46 @@
+﻿id: title
+name:
+  en-US: Title
+description:
+  en-US: A title page.
+fields:
+- id: title
+  name:
+    en-US: Title
+  type: ShortText
+  required: true
+  helpText:
+    en-US: The title to display.
+  reference: 
+- id: author
+  name:
+    en-US: Author
+  type: ShortText
+  required: true
+  helpText:
+    en-US: The author of the presentation.
+  reference: 
+- id: date
+  name:
+    en-US: Date
+  type: DateTime
+  required: true
+  helpText:
+    en-US: The date of the presentation.
+  reference: 
+- id: hashtags
+  name:
+    en-US: Hash Tags
+  type: ShortText
+  required: true
+  helpText:
+    en-US: A comma separated list of hash tags to display.
+  reference: 
+- id: backgroundImage
+  name:
+    en-US: Background Image
+  type: Media
+  required: false
+  helpText:
+    en-US: The background image to show on the page.
+  reference: 

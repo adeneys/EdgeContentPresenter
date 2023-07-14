@@ -17,9 +17,24 @@ namespace EdgeContentPresenter.ContentSource
             _cache = cache;
         }
 
+        public async Task<IList<NavigablePage>> GetNavigationAsync(string name)
+        {
+            var key = GenerateNavigationCacheKey(name);
+            return await _cache.GetOrCreateAsync(key, async entry =>
+            {
+                var navigation = await _inner.GetNavigationAsync(name);
+                return navigation;
+            });
+        }
+
+        private string GenerateNavigationCacheKey(string name)
+        {
+            return "navigation-" + name;
+        }
+
         public async Task<Content> GetContentAsync(string identifier)
         {
-            var key = GenerateCacheKey(identifier);
+            var key = GenerateContentCacheKey(identifier);
             return await _cache.GetOrCreateAsync(key, async entry =>
             {
                 var content = await _inner.GetContentAsync(identifier);
@@ -27,7 +42,7 @@ namespace EdgeContentPresenter.ContentSource
             });
         }
 
-        private string GenerateCacheKey(string identifier)
+        private string GenerateContentCacheKey(string identifier)
         {
             return "content-" + identifier;
         }

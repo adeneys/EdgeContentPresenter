@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "ch-one-cli": {
+      "version": "1.2.0",
+      "commands": [
+        "ch-one-cli"
+      ]
+    }
+  }
+}

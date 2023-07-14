@@ -1,0 +1,12 @@
+﻿id: N3JdAUo91UuP9DhQSV0QAg
+name: Primary Navigation
+fields:
+  pages:
+    value:
+    - type: Link
+      relatedType: Content
+      id: hIU1K9sL3ECies8T1nVqug
+    - type: Link
+      relatedType: Content
+      id: Ifuxok0M8UmhdsU4hSAUkQ
+    type: Reference

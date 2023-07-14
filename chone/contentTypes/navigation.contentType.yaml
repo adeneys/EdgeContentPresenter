@@ -1,0 +1,14 @@
+﻿id: navigation
+name:
+  en-US: Navigation
+description:
+  en-US: Defines the ordered navigation of a set of pages.
+fields:
+- id: pages
+  name:
+    en-US: Pages
+  type: Reference
+  required: false
+  helpText:
+    en-US: ''
+  reference: 

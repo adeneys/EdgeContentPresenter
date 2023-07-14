@@ -1,0 +1,62 @@
+﻿id: bio
+name:
+  en-US: Bio
+description:
+  en-US: Biography details of the presentation author.
+fields:
+- id: title
+  name:
+    en-US: Title
+  type: ShortText
+  required: true
+  helpText:
+    en-US: The title to display.
+  reference: 
+- id: author
+  name:
+    en-US: Author
+  type: ShortText
+  required: true
+  helpText:
+    en-US: The name of the author of the presentation.
+  reference: 
+- id: jobTitle
+  name:
+    en-US: Job Title
+  type: ShortText
+  required: true
+  helpText:
+    en-US: The job title of the author.
+  reference: 
+- id: highlights
+  name:
+    en-US: Highlights
+  type: RichText
+  required: false
+  helpText:
+    en-US: ''
+  reference: 
+- id: mastodon
+  name:
+    en-US: Mastodon Handle
+  type: ShortText
+  required: true
+  helpText:
+    en-US: The Mastodon handle of the author.
+  reference: 
+- id: headerImage
+  name:
+    en-US: Header Image
+  type: Media
+  required: false
+  helpText:
+    en-US: The header image to show on the page.
+  reference: 
+- id: profileImage
+  name:
+    en-US: Profile Image
+  type: Media
+  required: false
+  helpText:
+    en-US: The profile image of the author.
+  reference: 

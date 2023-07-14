@@ -24,8 +24,8 @@ public partial class MainPage : ContentPage
 
         try
         {
-            var startIdentifier = await _appSettings.GetTitleContentIdentifierAsync();
-            await _pageController.LoadContent(startIdentifier);
+            var startIdentifier = await _appSettings.GetNavigationNameAsync();
+            await _pageController.LoadNavigation(startIdentifier);
         }
         catch (Exception ex)
         {

@@ -6,6 +6,8 @@ namespace EdgeContentPresenter.ContentSource
     {
         Page? CurrentPage { get; }
 
+        Task LoadNavigation(string name);
+
         Task LoadContent(string identifier);
     }
 }

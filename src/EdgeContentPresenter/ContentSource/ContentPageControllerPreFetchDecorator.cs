@@ -26,6 +26,11 @@ namespace EdgeContentPresenter.ContentSource
             _inner.PropertyChanged += InnerPropertyChanged;
         }
 
+        public Task LoadNavigation(string name)
+        {
+            return _inner.LoadNavigation(name);
+        }
+
         public Task LoadContent(string identifier)
         {
             return _inner.LoadContent(identifier);

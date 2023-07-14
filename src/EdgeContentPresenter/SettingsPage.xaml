@@ -19,8 +19,8 @@
                 <Label Text="X-GQL-Token"/>
                 <Entry x:Name="token" IsPassword="True"/>
 
-                <Label Text="Title identifier"/>
-                <Entry x:Name="startIdentifier"/>
+                <Label Text="Navigation Name"/>
+                <Entry x:Name="navigationName"/>
 
                 <Button Text="Save" WidthRequest="200" Clicked="SaveSettings"/>
 

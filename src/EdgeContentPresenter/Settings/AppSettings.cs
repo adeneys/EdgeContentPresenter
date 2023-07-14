@@ -4,9 +4,10 @@
     {
         private const string EdgeUrlSettingName = "EdgeUrl";
         private const string XGqlTokenSettingName = "XGQLToken";
-        private const string TitleContentIdentifierSettingName = "TitleContentIdentifier";
+        private const string NavigationNameSettingName = "NavigationName";
 
         private const string DefaultEdgeUrl = "https://edge.sitecorecloud.io";
+        private const string DefaultNavigationName = "Primary Navigation";
 
         private readonly ISecureStorage _secureStorage;
 
@@ -41,17 +42,17 @@
                 await _secureStorage.SetAsync(XGqlTokenSettingName, token);
         }
 
-        public async Task<string> GetTitleContentIdentifierAsync()
+        public async Task<string> GetNavigationNameAsync()
         {
-            return await _secureStorage.GetAsync(TitleContentIdentifierSettingName);
+            return await _secureStorage.GetAsync(NavigationNameSettingName) ?? DefaultNavigationName;
         }
 
-        public async Task SetTitleContentIdentifierAsync(string identifier)
+        public async Task SetNavigationNameAsync(string name)
         {
-            if (string.IsNullOrEmpty(identifier))
-                _secureStorage.Remove(TitleContentIdentifierSettingName);
+            if (string.IsNullOrEmpty(name))
+                _secureStorage.Remove(NavigationNameSettingName);
             else
-                await _secureStorage.SetAsync(TitleContentIdentifierSettingName, identifier);
+                await _secureStorage.SetAsync(NavigationNameSettingName, name);
         }
     }
 }

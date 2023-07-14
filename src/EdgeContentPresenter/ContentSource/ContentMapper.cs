@@ -7,6 +7,39 @@ namespace EdgeContentPresenter.ContentSource
     {
         private const string HeaderAssetTypeId = "PresentationAssets.PageHeader";
 
+        public IList<NavigablePage> MapNavigationResponse(string content)
+        {
+            var json = JsonDocument.Parse(content);
+            var pages = new List<NavigablePage>();
+
+            try
+            {
+                var pageResults = json.RootElement
+                    .GetProperty("data")
+                    .GetProperty("allNavigation")
+                    .GetProperty("results")
+                    .GetProperty("pages")
+                    .GetProperty("results")
+                    .EnumerateArray();
+
+                if (pageResults.Any())
+                {
+                    foreach (var pageResult in pageResults)
+                    {
+                        var page = pageResult.Deserialize<NavigablePage>();
+                        if(page != null)
+                            pages.Add(page);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new EdgeException("Error deserializing navigation JSON", ex);
+            }
+
+            return pages;
+        }
+
         public Content? MapContentResponse(string content)
         {
             var json = JsonDocument.Parse(content);
