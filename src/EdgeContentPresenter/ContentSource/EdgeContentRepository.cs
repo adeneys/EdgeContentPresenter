@@ -9,9 +9,8 @@ namespace EdgeContentPresenter.ContentSource
         private readonly IAppSettings _appSettings;
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IContentMapper _contentMapper;
-        
-        private string? _contentQquery = null;
-        private string? _navigationQuery = null;
+
+        private Dictionary<string, string> _contentTypeQueries = new();
 
         public EdgeContentRepository(IAppSettings appSettings, IHttpClientFactory httpClientFactory, IContentMapper contentMapper)
         {
@@ -22,11 +21,11 @@ namespace EdgeContentPresenter.ContentSource
 
         public async Task<IList<NavigablePage>> GetNavigationAsync(string name)
         {
-            await EnsureQueryTextLoaded();
+            var queryText = await GetContentTypeQuery("Navigation");
 
             var queryRequest = new GraphQLRequest
             {
-                Query = _navigationQuery,
+                Query = queryText,
                 Variables = new Dictionary<string, string>
                 {
                     { "name", name }
@@ -42,13 +41,13 @@ namespace EdgeContentPresenter.ContentSource
             return _contentMapper.MapNavigationResponse(contentJson);
         }
 
-        public async Task<Content?> GetContentAsync(string identifier)
+        public async Task<Content?> GetContentAsync(string type, string identifier)
         {
-            await EnsureQueryTextLoaded();
-            
+            var queryText = await GetContentTypeQuery(type);
+
             var queryRequest = new GraphQLRequest
             {
-                Query = _contentQquery,
+                Query = queryText,
                 Variables = new Dictionary<string, string>
                 {
                     { "id", identifier }
@@ -61,26 +60,21 @@ namespace EdgeContentPresenter.ContentSource
                 throw new EdgeException($"Edge response was not success: {response.StatusCode}");
 
             var contentJson = await response.Content.ReadAsStringAsync();
-            return _contentMapper.MapContentResponse(contentJson);
+            return _contentMapper.MapContentResponse(type, contentJson);
         }
 
-        private async Task EnsureQueryTextLoaded()
+        private async Task<string> GetContentTypeQuery(string type)
         {
-            if (_contentQquery == null)
-            {
-                using var stream = await FileSystem.OpenAppPackageFileAsync("ContentSource\\GraphQLQueries\\GetContent.graphql");
-                using var reader = new StreamReader(stream);
+            if (_contentTypeQueries.ContainsKey(type))
+                return _contentTypeQueries[type];
 
-                _contentQquery = reader.ReadToEnd();
-            }
+            using var stream = await FileSystem.OpenAppPackageFileAsync($"ContentSource\\GraphQLQueries\\Get{type}.graphql");
+            using var reader = new StreamReader(stream);
 
-            if (_navigationQuery == null)
-            {
-                using var stream = await FileSystem.OpenAppPackageFileAsync("ContentSource\\GraphQLQueries\\GetNavigation.graphql");
-                using var reader = new StreamReader(stream);
+            var querytext = reader.ReadToEnd();
+            _contentTypeQueries.Add(type, querytext);
 
-                _navigationQuery = reader.ReadToEnd();
-            }
+            return _contentTypeQueries[type];
         }
 
         private async Task<HttpResponseMessage> PostQuery(GraphQLRequest queryRequest)

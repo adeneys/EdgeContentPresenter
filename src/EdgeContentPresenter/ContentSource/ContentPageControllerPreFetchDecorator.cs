@@ -46,7 +46,7 @@ namespace EdgeContentPresenter.ContentSource
                 {
                     if (!string.IsNullOrEmpty(content.NextContentIdentifier))
                     {
-                        var nextContent = await _contentRepository.GetContentAsync(content.NextContentIdentifier);
+                        var nextContent = await _contentRepository.GetContentAsync(content.NextContentType, content.NextContentIdentifier);
                         _contentPageFactory.CreatePageForContent(nextContent);
                     }
                 }

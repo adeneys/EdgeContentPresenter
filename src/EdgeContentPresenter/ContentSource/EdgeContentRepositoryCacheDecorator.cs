@@ -32,19 +32,19 @@ namespace EdgeContentPresenter.ContentSource
             return "navigation-" + name;
         }
 
-        public async Task<Content> GetContentAsync(string identifier)
+        public async Task<Content> GetContentAsync(string type, string identifier)
         {
-            var key = GenerateContentCacheKey(identifier);
+            var key = GenerateContentCacheKey(type, identifier);
             return await _cache.GetOrCreateAsync(key, async entry =>
             {
-                var content = await _inner.GetContentAsync(identifier);
+                var content = await _inner.GetContentAsync(type, identifier);
                 return content;
             });
         }
 
-        private string GenerateContentCacheKey(string identifier)
+        private string GenerateContentCacheKey(string type, string identifier)
         {
-            return "content-" + identifier;
+            return $"content-{type}-{identifier}";
         }
     }
 }

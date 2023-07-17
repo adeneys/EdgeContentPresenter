@@ -10,5 +10,7 @@ namespace EdgeContentPresenter.Model
         public string Type { get; set; }
 
         public string? NextContentIdentifier { get; set; }
+
+        public string? NextContentType { get; set; }
     }
 }

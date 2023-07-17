@@ -4,16 +4,16 @@ namespace EdgeContentPresenter.Model
 {
     public class TitleContent : Content
     {
-        [JsonPropertyName("title_Title")]
+        [JsonPropertyName("title")]
         public string Title { get; set; }
 
-        [JsonPropertyName("title_Author")]
+        [JsonPropertyName("author")]
         public string Author { get; set; }
 
-        [JsonPropertyName("title_Date")]
-        public string Date { get; set; }
+        [JsonPropertyName("date")]
+        public DateTime Date { get; set; }
 
-        [JsonPropertyName("title_HashTags")]
+        [JsonPropertyName("hashtags")]
         public string HashTags { get; set; }
 
         public string BackgroundImageUrl { get; set; }

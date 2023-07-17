@@ -34,7 +34,7 @@ fields:
   type: ShortText
   required: true
   helpText:
-    en-US: A comma separated list of hash tags to display.
+    en-US: The hash tags to display.
   reference: 
 - id: backgroundImage
   name:

@@ -33,13 +33,18 @@ namespace EdgeContentPresenter.ContentSource
         {
             try
             {
-                var content = await _contentRepository.GetContentAsync(identifier);
+                var navigablePage = _navigablePages.FirstOrDefault(x => x.Identifier == identifier);
+                if (navigablePage == null)
+                    throw new EdgeException($"Failed to find page '{identifier}' in navigation");
+
+                var content = await _contentRepository.GetContentAsync(navigablePage.Type, identifier);
                 if (content == null)
                 {
                     CurrentPage = null;
                 }
                 else
                 {
+                    ExtendContent(content);
                     var page = _contentPageFactory.CreatePageForContent(content);
                     CurrentPage = page;
                 }
@@ -59,8 +64,11 @@ namespace EdgeContentPresenter.ContentSource
             {
                 if (_navigablePages[i].Identifier == content.Identifier)
                 {
-                    if (i < _navigablePages.Count - 2)
+                    if (i < _navigablePages.Count - 1)
+                    {
                         content.NextContentIdentifier = _navigablePages[i + 1].Identifier;
+                        content.NextContentType = _navigablePages[i + 1].Type;
+                    }
 
                     return;
                 }

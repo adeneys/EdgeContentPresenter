@@ -1,0 +1,26 @@
+﻿query GetBio($id: String!) {
+  bio(id: $id) {
+    id
+    title
+    author
+    jobTitle
+    highlights
+    mastodon
+    headerImage(first: 1) {
+      ...mediaInfo
+    }
+    profileImage(first: 1) {
+      ...mediaInfo
+    }
+  }
+}
+
+fragment mediaInfo on MediaList {
+  results {
+    fileName
+    fileUrl
+    fileWidth
+    fileHeight
+    fileSize
+  }
+}

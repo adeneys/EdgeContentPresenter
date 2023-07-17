@@ -1,0 +1,18 @@
+﻿query GetTitle($id: String!) {
+  title(id: $id) {
+    id
+    title
+    author
+    date
+    hashtags
+    backgroundImage(first: 1) {
+      results {
+        fileName
+        fileUrl
+        fileWidth
+        fileHeight
+        fileSize
+      }
+    }
+  }
+}

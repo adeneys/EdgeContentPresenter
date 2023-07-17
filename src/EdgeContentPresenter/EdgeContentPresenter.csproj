@@ -16,7 +16,7 @@
 
 		<!-- App Identifier -->
 		<ApplicationId>net.codeflood.edgepresent</ApplicationId>
-		<ApplicationIdGuid>26AAA7D4-FA2D-44AE-A40E-11177216C2E0</ApplicationIdGuid>
+		<ApplicationIdGuid>36AAA7D4-FA2D-44AE-A40E-11177216C2E0</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>2.0</ApplicationDisplayVersion>
@@ -48,13 +48,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="6.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
-		<PackageReference Include="Scrutor" Version="4.2.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Resources\Images\" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+		<PackageReference Include="Scrutor" Version="4.2.2" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -62,11 +58,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Remove="ContentSource\GraphQLQueries\GetContent.graphql" />
-		<None Remove="ContentSource\GraphQLQueries\GetNavigation.graphql" />
+	  <MauiImage Remove="Resources\Images\splash.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Remove="ContentSource\GraphQLQueries\GetBio.graphql" />
+		<None Remove="ContentSource\GraphQLQueries\GetContent.graphql" />
+		<None Remove="ContentSource\GraphQLQueries\GetNavigation.graphql" />
+		<None Remove="ContentSource\GraphQLQueries\GetTitle.graphql" />
+		<None Remove="Resources\Images\splash.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<MauiAsset Include="ContentSource\GraphQLQueries\GetBio.graphql" />
+		<MauiAsset Include="ContentSource\GraphQLQueries\GetTitle.graphql" />
 		<MauiAsset Include="ContentSource\GraphQLQueries\GetContent.graphql" />
 		<MauiAsset Include="ContentSource\GraphQLQueries\GetNavigation.graphql" />
 	</ItemGroup>

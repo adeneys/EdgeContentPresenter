@@ -6,6 +6,6 @@ namespace EdgeContentPresenter.ContentSource
     {
         IList<NavigablePage> MapNavigationResponse(string content);
 
-        Content? MapContentResponse(string content);
+        Content? MapContentResponse(string type, string content);
     }
 }

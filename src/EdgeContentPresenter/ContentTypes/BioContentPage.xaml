@@ -35,7 +35,7 @@
                     Spacing="15">
 
                     <Label 
-                        Text="{Binding Name}"
+                        Text="{Binding Author}"
                         Style="{DynamicResource Bio-Name}" />
 
                     <Label 
@@ -48,7 +48,7 @@
                         TextType="Html" />
 
                     <Label 
-                        Text="{Binding Twitter, StringFormat='@{0}'}"
+                        Text="{Binding MastodonUrl}"
                         Style="{DynamicResource Bio-Twitter}" />
 
                 </VerticalStackLayout>

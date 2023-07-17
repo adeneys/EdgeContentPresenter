@@ -6,6 +6,6 @@ namespace EdgeContentPresenter.ContentSource
     {
         Task<IList<NavigablePage>> GetNavigationAsync(string name);
 
-        Task<Content?> GetContentAsync(string identifier);
+        Task<Content?> GetContentAsync(string type, string identifier);
     }
 }

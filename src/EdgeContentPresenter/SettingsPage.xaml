@@ -17,7 +17,7 @@
                 <Entry x:Name="url"/>
 
                 <Label Text="X-GQL-Token"/>
-                <Entry x:Name="token" IsPassword="True"/>
+                <Entry x:Name="token" IsPassword="True" ClearButtonVisibility="WhileEditing" HorizontalOptions="StartAndExpand"/>
 
                 <Label Text="Navigation Name"/>
                 <Entry x:Name="navigationName"/>

@@ -9,5 +9,8 @@ namespace EdgeContentPresenter.Model
 
         [JsonPropertyName("name")]
         public string Name { get; set; }
+
+        [JsonPropertyName("__typename")]
+        public string Type { get; set; }
     }
 }

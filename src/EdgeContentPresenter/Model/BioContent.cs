@@ -4,20 +4,19 @@ namespace EdgeContentPresenter.Model
 {
     internal class BioContent : Content
     {
-        [JsonPropertyName("bio_Title")]
+        [JsonPropertyName("title")]
         public string Title { get; set; }
 
-        [JsonPropertyName("bio_Name")]
-        public string Name { get; set; }
+        [JsonPropertyName("author")]
+        public string Author { get; set; }
 
-        [JsonPropertyName("bio_JobTitle")]
+        [JsonPropertyName("jobTitle")]
         public string JobTitle { get; set; }
 
-        [JsonPropertyName("bio_Highlights")]
         public string Highlights { get; set; }
 
-        [JsonPropertyName("bio_Twitter")]
-        public string Twitter { get; set; }
+        [JsonPropertyName("mastodon")]
+        public string MastodonUrl { get; set; }
 
         public string PageHeaderImageUrl { get; set; }
 

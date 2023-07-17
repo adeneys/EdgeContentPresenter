@@ -1,4 +1,6 @@
 ﻿using EdgeContentPresenter.Model;
+using Microsoft.Maui.Controls;
+using System;
 using System.Text.Json;
 
 namespace EdgeContentPresenter.ContentSource
@@ -14,10 +16,18 @@ namespace EdgeContentPresenter.ContentSource
 
             try
             {
-                var pageResults = json.RootElement
+                var navigationResults = json.RootElement
                     .GetProperty("data")
                     .GetProperty("allNavigation")
                     .GetProperty("results")
+                    .EnumerateArray();
+
+                if (!navigationResults.MoveNext())
+                {
+                    throw new EdgeException("Failed to find navigation");
+                }
+
+                var pageResults = navigationResults.Current
                     .GetProperty("pages")
                     .GetProperty("results")
                     .EnumerateArray();
@@ -40,22 +50,14 @@ namespace EdgeContentPresenter.ContentSource
             return pages;
         }
 
-        public Content? MapContentResponse(string content)
+        public Content? MapContentResponse(string type, string content)
         {
             var json = JsonDocument.Parse(content);
 
             try
             {
-                var result = json.RootElement
-                    .GetProperty("data")
-                    .GetProperty("m_Content");
-
-                var type = result
-                    .GetProperty("contentTypeToContent")
-                    .GetProperty("id")
-                    .GetString();
-
-                return Deserialize(result, type);
+                var data = json.RootElement.GetProperty("data");
+                return Deserialize(type, data);
             }
             catch(Exception ex)
             {
@@ -63,15 +65,14 @@ namespace EdgeContentPresenter.ContentSource
             }
         }
 
-        private Content? Deserialize(JsonElement element, string type)
+        private Content? Deserialize(string type, JsonElement element)
         {
             return type switch
             {
-                "M.ContentType.Blog" => Deserialize<BlogContent>(element, type),
-                "M.ContentType.Title" => DeserializeTitleContent(element, type),
-                "M.ContentType.Bio" => DeserializeBioContent(element, type),
-                "M.ContentType.SectionTitle" => DeserializeSectionTitleContent(element, type),
-                "M.ContentType.Text" => DeserializeTextContent(element, type),
+                "Title" => DeserializeTitleContent(element, type),
+                "Bio" => DeserializeBioContent(element, type),
+                //"M.ContentType.SectionTitle" => DeserializeSectionTitleContent(element, type),
+                //"M.ContentType.Text" => DeserializeTextContent(element, type),
                 _ => throw new EdgeException("Unknown content type " + type)
             };
         }
@@ -86,26 +87,28 @@ namespace EdgeContentPresenter.ContentSource
 
         private Content? DeserializeTitleContent(JsonElement element, string type)
         {
-            var result = Deserialize<TitleContent>(element, type);
-            result.BackgroundImageUrl = ResolvePrimaryImageUrl(element);
-            result.NextContentIdentifier = ResolveNextContentIdentifier(element, "reference_Title_Next_Parents");
+            var contentElement = element.GetProperty("title");
+            var result = Deserialize<TitleContent>(contentElement, type);
+            result.BackgroundImageUrl = ResolveImageUrl(contentElement, "backgroundImage");
             return result;
         }
 
         private Content? DeserializeBioContent(JsonElement element, string type)
         {
-            var result = Deserialize<BioContent>(element, type);
-            result.ImageUrl = ResolvePrimaryImageUrl(element);
-            result.PageHeaderImageUrl = ResolveImageUrl(element, "pageHeader", null, null);
-            result.NextContentIdentifier = ResolveNextContentIdentifier(element, "reference_Bio_Next_Parents");
+            var contentElement = element.GetProperty("bio");
+            var result = Deserialize<BioContent>(contentElement, type);
+            result.Highlights = ResolveRichText(contentElement, "highlights");
+            result.ImageUrl = ResolveImageUrl(contentElement, "profileImage");
+            result.PageHeaderImageUrl = ResolveImageUrl(contentElement, "headerImage");
+            //result.NextContentIdentifier = ResolveNextContentIdentifier(element, "reference_Bio_Next_Parents");
             return result;
         }
 
-        private Content? DeserializeSectionTitleContent(JsonElement element, string type)
+        /*private Content? DeserializeSectionTitleContent(JsonElement element, string type)
         {
             var result = Deserialize<SectionTitleContent>(element, type);
             result.BackgroundImageUrl = ResolvePrimaryImageUrl(element);
-            result.NextContentIdentifier = ResolveNextContentIdentifier(element, "reference_SectionTitle_Next_Parents");
+            //result.NextContentIdentifier = ResolveNextContentIdentifier(element, "reference_SectionTitle_Next_Parents");
             return result;
         }
 
@@ -114,11 +117,11 @@ namespace EdgeContentPresenter.ContentSource
             var result = Deserialize<TextContent>(element, type);
             result.PageHeaderImageUrl = ResolveImageUrl(element, "pageHeader", null, null);
             result.MainImageUrl = ResolvePrimaryImageUrl(element);
-            result.NextContentIdentifier = ResolveNextContentIdentifier(element, "reference_Text_Next_Parents");
+            //result.NextContentIdentifier = ResolveNextContentIdentifier(element, "reference_Text_Next_Parents");
             return result;
-        }
+        }*/
 
-        private string? ResolvePrimaryImageUrl(JsonElement element)
+        /*private string? ResolvePrimaryImageUrl(JsonElement element)
         {
             var url = ResolveImageUrl(element, "cmpContentToMasterLinkedAsset", null, null);
 
@@ -126,9 +129,9 @@ namespace EdgeContentPresenter.ContentSource
                 url = ResolveImageUrl(element, "cmpContentToLinkedAsset", null, HeaderAssetTypeId);
 
             return url;
-        }
+        }*/
 
-        private string? ResolveImageUrl(JsonElement element, string relationName, string includePresentationAsset, string excludePresentationAsset)
+        /*private string? ResolveImageUrl(JsonElement element, string relationName, string includePresentationAsset, string excludePresentationAsset)
         {
             var assetList = element
                 .GetProperty(relationName)
@@ -159,9 +162,27 @@ namespace EdgeContentPresenter.ContentSource
             }
 
             return null;
+        }*/
+
+        private string? ResolveImageUrl(JsonElement element, string relationName)
+        {
+            var assetList = element
+                .GetProperty(relationName)
+                .GetProperty("results")
+                .EnumerateArray();
+
+            if (assetList.Any())
+            {
+                foreach (var asset in assetList)
+                {
+                    return ResolveImageUrl(asset);
+                }
+            }
+
+            return null;
         }
 
-        private IList<string> ResolveAssetPresentationType(JsonElement element)
+        /*private IList<string> ResolveAssetPresentationType(JsonElement element)
         {
             var types = new List<string>();
 
@@ -183,21 +204,18 @@ namespace EdgeContentPresenter.ContentSource
             }
 
             return types;
-        }
+        }*/
 
         private string? ResolveImageUrl(JsonElement element)
         {
-            var urls = element.GetProperty("urls");
-            var urlsEnumerator = urls.EnumerateObject();
-
-            var firstUrl = urlsEnumerator.FirstOrDefault();
-            if(firstUrl.Value.ValueKind != JsonValueKind.Undefined)
-                return firstUrl.Value.GetProperty("url").GetString();
+            var url = element.GetProperty("fileUrl");
+            if(url.ValueKind != JsonValueKind.Undefined)
+                return url.GetString();
 
             return null;
         }
 
-        private string? ResolveNextContentIdentifier(JsonElement element, string relationName)
+        /*private string? ResolveNextContentIdentifier(JsonElement element, string relationName)
         {
             if (!element.TryGetProperty(relationName, out var relation))
                 return null;
@@ -212,6 +230,15 @@ namespace EdgeContentPresenter.ContentSource
                 return firstContent
                     .GetProperty("id")
                     .GetString();
+
+            return null;
+        }*/
+
+        private string? ResolveRichText(JsonElement element, string fieldName)
+        {
+            var data = element.GetProperty(fieldName);
+            if (data.ValueKind != JsonValueKind.Undefined)
+                return data.ToString();
 
             return null;
         }
