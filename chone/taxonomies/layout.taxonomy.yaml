@@ -1,0 +1,13 @@
+﻿id: layout
+name:
+  en-US: Layout
+values:
+- id: left
+  name:
+    en-US: Left
+- id: right
+  name:
+    en-US: Right
+- id: noSubtitle
+  name:
+    en-US: No Subtitle

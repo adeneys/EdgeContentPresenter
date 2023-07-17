@@ -32,7 +32,7 @@
                     Style="{DynamicResource Title-Author}" />
 
                 <Label 
-                    Text="{Binding Date}"
+                    Text="{Binding Date, StringFormat='{0:d}'}"
                     Style="{DynamicResource Title-Date}" />
 
                 <Label 

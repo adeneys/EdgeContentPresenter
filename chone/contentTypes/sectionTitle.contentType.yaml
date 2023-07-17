@@ -1,0 +1,41 @@
+﻿id: sectionTitle
+name:
+  en-US: Section Title
+description:
+  en-US: A title page for a section.
+fields:
+- id: title
+  name:
+    en-US: Title
+  type: ShortText
+  required: true
+  helpText:
+    en-US: The title to display.
+  reference: 
+- id: subtitle
+  name:
+    en-US: Subtitle
+  type: ShortText
+  required: false
+  helpText:
+    en-US: The subtitle to display.
+  reference: 
+- id: backgroundImage
+  name:
+    en-US: Background Image
+  type: Media
+  required: false
+  helpText:
+    en-US: The background image to show on the page.
+  reference: 
+- id: layout
+  name:
+    en-US: Layout
+  type: Select
+  required: false
+  helpText:
+    en-US: ''
+  reference:
+    id: layout
+    type: Link
+    relatedType: Taxonomy

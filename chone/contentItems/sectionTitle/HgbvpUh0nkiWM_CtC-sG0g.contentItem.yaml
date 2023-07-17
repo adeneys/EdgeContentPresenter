@@ -1,0 +1,20 @@
+﻿id: HgbvpUh0nkiWM_CtC-sG0g
+name: Right subtitle
+fields:
+  title:
+    value: Right subtitle
+    type: ShortText
+  subtitle:
+    value: This is a subtitle
+    type: ShortText
+  layout:
+    value:
+    - id: right
+    - id: left
+    type: Select
+  backgroundImage:
+    value:
+    - type: Link
+      relatedType: Media
+      id: WR0KTKpHLEG4o7yevNAcag
+    type: Media

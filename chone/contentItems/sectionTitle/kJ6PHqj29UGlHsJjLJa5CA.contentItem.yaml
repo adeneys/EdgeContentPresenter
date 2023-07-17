@@ -1,0 +1,19 @@
+﻿id: kJ6PHqj29UGlHsJjLJa5CA
+name: Left subtitle
+fields:
+  title:
+    value: Left Subtitle
+    type: ShortText
+  subtitle:
+    value: Another subtitle
+    type: ShortText
+  layout:
+    value:
+    - id: left
+    type: Select
+  backgroundImage:
+    value:
+    - type: Link
+      relatedType: Media
+      id: za_6g8tZ10O1tZt6ZRBfeA
+    type: Media

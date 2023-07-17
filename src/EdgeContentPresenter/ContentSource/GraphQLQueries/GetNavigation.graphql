@@ -16,6 +16,14 @@
             id
             name
           }
+          ... on Text {
+            id
+            name
+          }
+          ... on SectionTitle {
+            id
+            name
+          }
         }
       }
     }

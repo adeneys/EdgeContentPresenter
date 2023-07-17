@@ -1,0 +1,23 @@
+﻿query GetText($id: String!) {
+  text(id:$id) {
+    id
+    title
+    text
+    headerImage(first: 1) {
+      ...mediaInfo
+    }
+    images {
+      ...mediaInfo
+    }
+  }
+}
+
+fragment mediaInfo on MediaList {
+  results {
+    fileName
+    fileUrl
+    fileWidth
+    fileHeight
+    fileSize
+  }
+}

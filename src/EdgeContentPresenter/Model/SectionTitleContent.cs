@@ -4,13 +4,12 @@ namespace EdgeContentPresenter.Model
 {
     internal class SectionTitleContent : Content
     {
-        [JsonPropertyName("sectionTitle_Title")]
+        [JsonPropertyName("title")]
         public string Title { get; set; }
 
-        [JsonPropertyName("sectionTitle_Subtitle")]
+        [JsonPropertyName("subtitle")]
         public string Subtitle { get; set; }
 
-        [JsonPropertyName("sectionTitle_Layout")]
         public string Layout { get; set; }
 
         public string BackgroundImageUrl { get; set; }

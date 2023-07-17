@@ -1,22 +1,19 @@
-﻿id: Ifuxok0M8UmhdsU4hSAUkQ
-name: Bio
+﻿id: OHocPB0DfUm8urk1cofOkQ
+name: Agenda
 fields:
   title:
-    value: Bio
+    value: Agenda
     type: ShortText
-  author:
-    value: Alistair Deneys
-    type: ShortText
-  jobTitle:
-    value: System Architect
-    type: ShortText
-  highlights:
+  text:
     value: >-
       {
         "type": "doc",
         "content": [
           {
-            "type": "bulletList",
+            "type": "orderedList",
+            "attrs": {
+              "start": 1
+            },
             "content": [
               {
                 "type": "listItem",
@@ -26,7 +23,7 @@ fields:
                     "content": [
                       {
                         "type": "text",
-                        "text": "Architect for Experience Edge"
+                        "text": "GraphQL & Introspection"
                       }
                     ]
                   }
@@ -40,7 +37,7 @@ fields:
                     "content": [
                       {
                         "type": "text",
-                        "text": "Former MVP"
+                        "text": "XM Schema"
                       }
                     ]
                   }
@@ -54,7 +51,7 @@ fields:
                     "content": [
                       {
                         "type": "text",
-                        "text": "Worked across XM, XP, SaaS"
+                        "text": "Content Hub Schema"
                       }
                     ]
                   }
@@ -68,21 +65,7 @@ fields:
                     "content": [
                       {
                         "type": "text",
-                        "text": "Working with Sitecore technology for 18+ years"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "type": "listItem",
-                "content": [
-                  {
-                    "type": "paragraph",
-                    "content": [
-                      {
-                        "type": "text",
-                        "text": "Lives in Melbourne, Australia"
+                        "text": "Differences in Content Hub and Content Hub ONE"
                       }
                     ]
                   }
@@ -93,18 +76,12 @@ fields:
         ]
       }
     type: RichText
-  mastodon:
-    value: '@adeneys@hachyderm.io'
-    type: ShortText
   headerImage:
     value:
     - type: Link
       relatedType: Media
       id: aPwwqrycxESpC9iQhWnieg
     type: Media
-  profileImage:
-    value:
-    - type: Link
-      relatedType: Media
-      id: _4Q0IYaAckejacEIwFgP9g
+  images:
+    value: []
     type: Media

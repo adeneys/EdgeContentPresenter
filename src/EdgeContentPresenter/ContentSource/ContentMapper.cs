@@ -1,6 +1,4 @@
 ﻿using EdgeContentPresenter.Model;
-using Microsoft.Maui.Controls;
-using System;
 using System.Text.Json;
 
 namespace EdgeContentPresenter.ContentSource
@@ -71,8 +69,8 @@ namespace EdgeContentPresenter.ContentSource
             {
                 "Title" => DeserializeTitleContent(element, type),
                 "Bio" => DeserializeBioContent(element, type),
-                //"M.ContentType.SectionTitle" => DeserializeSectionTitleContent(element, type),
-                //"M.ContentType.Text" => DeserializeTextContent(element, type),
+                "Text" => DeserializeTextContent(element, type),
+                "SectionTitle" => DeserializeSectionTitleContent(element, type),
                 _ => throw new EdgeException("Unknown content type " + type)
             };
         }
@@ -89,7 +87,7 @@ namespace EdgeContentPresenter.ContentSource
         {
             var contentElement = element.GetProperty("title");
             var result = Deserialize<TitleContent>(contentElement, type);
-            result.BackgroundImageUrl = ResolveImageUrl(contentElement, "backgroundImage");
+            result.BackgroundImageUrl = ResolveImageUrls(contentElement, "backgroundImage").FirstOrDefault();
             return result;
         }
 
@@ -98,113 +96,51 @@ namespace EdgeContentPresenter.ContentSource
             var contentElement = element.GetProperty("bio");
             var result = Deserialize<BioContent>(contentElement, type);
             result.Highlights = ResolveRichText(contentElement, "highlights");
-            result.ImageUrl = ResolveImageUrl(contentElement, "profileImage");
-            result.PageHeaderImageUrl = ResolveImageUrl(contentElement, "headerImage");
-            //result.NextContentIdentifier = ResolveNextContentIdentifier(element, "reference_Bio_Next_Parents");
-            return result;
-        }
-
-        /*private Content? DeserializeSectionTitleContent(JsonElement element, string type)
-        {
-            var result = Deserialize<SectionTitleContent>(element, type);
-            result.BackgroundImageUrl = ResolvePrimaryImageUrl(element);
-            //result.NextContentIdentifier = ResolveNextContentIdentifier(element, "reference_SectionTitle_Next_Parents");
+            result.ImageUrl = ResolveImageUrls(contentElement, "profileImage").FirstOrDefault();
+            result.PageHeaderImageUrl = ResolveImageUrls(contentElement, "headerImage").FirstOrDefault();
             return result;
         }
 
         private Content? DeserializeTextContent(JsonElement element, string type)
         {
-            var result = Deserialize<TextContent>(element, type);
-            result.PageHeaderImageUrl = ResolveImageUrl(element, "pageHeader", null, null);
-            result.MainImageUrl = ResolvePrimaryImageUrl(element);
-            //result.NextContentIdentifier = ResolveNextContentIdentifier(element, "reference_Text_Next_Parents");
+            var contentElement = element.GetProperty("text");
+            var result = Deserialize<TextContent>(contentElement, type);
+            result.Text = ResolveRichText(contentElement, "text");
+            result.PageHeaderImageUrl = ResolveImageUrls(contentElement, "headerImage").FirstOrDefault();
+            result.ImageUrls = ResolveImageUrls(contentElement, "images").AsReadOnly();
             return result;
-        }*/
-
-        /*private string? ResolvePrimaryImageUrl(JsonElement element)
-        {
-            var url = ResolveImageUrl(element, "cmpContentToMasterLinkedAsset", null, null);
-
-            if(string.IsNullOrEmpty(url))
-                url = ResolveImageUrl(element, "cmpContentToLinkedAsset", null, HeaderAssetTypeId);
-
-            return url;
-        }*/
-
-        /*private string? ResolveImageUrl(JsonElement element, string relationName, string includePresentationAsset, string excludePresentationAsset)
-        {
-            var assetList = element
-                .GetProperty(relationName)
-                .GetProperty("results")
-                .EnumerateArray();
-
-            if (assetList.Any())
-            {
-                // Find first asset that satisfies the include & exclude parameters
-                foreach (var asset in assetList)
-                {
-                    var types = ResolveAssetPresentationType(asset);
-
-                    if(!string.IsNullOrEmpty(includePresentationAsset))
-                    {
-                        if (types.All(x => x != includePresentationAsset))
-                            continue;
-                    }
-
-                    if (!string.IsNullOrEmpty(excludePresentationAsset))
-                    {
-                        if (types.Any(x => x == excludePresentationAsset))
-                            continue;
-                    }
-
-                    return ResolveImageUrl(asset);
-                }
-            }
-
-            return null;
-        }*/
-
-        private string? ResolveImageUrl(JsonElement element, string relationName)
-        {
-            var assetList = element
-                .GetProperty(relationName)
-                .GetProperty("results")
-                .EnumerateArray();
-
-            if (assetList.Any())
-            {
-                foreach (var asset in assetList)
-                {
-                    return ResolveImageUrl(asset);
-                }
-            }
-
-            return null;
         }
 
-        /*private IList<string> ResolveAssetPresentationType(JsonElement element)
+        private Content? DeserializeSectionTitleContent(JsonElement element, string type)
         {
-            var types = new List<string>();
+            var contentElement = element.GetProperty("sectionTitle");
+            var result = Deserialize<SectionTitleContent>(contentElement, type);
+            result.BackgroundImageUrl = ResolveImageUrls(contentElement, "backgroundImage").FirstOrDefault();
+            result.Layout = ResolveLayout(contentElement, "layout");
+            return result;
+        }
 
-            if(!element.TryGetProperty("presentationAssets", out var presentationAssetsElement))
-                return types;
+        private IList<string> ResolveImageUrls(JsonElement element, string relationName)
+        {
+            var uris = new List<string>();
 
-            var presentationAssets = presentationAssetsElement
+            var mediaList = element
+                .GetProperty(relationName)
                 .GetProperty("results")
                 .EnumerateArray();
 
-            foreach (var type in presentationAssets)
+            if (mediaList.Any())
             {
-                var presentationAssetId = type
-                    .GetProperty("id")
-                    .GetString();
-
-                if (!string.IsNullOrEmpty(presentationAssetId))
-                    types.Add(presentationAssetId);
+                foreach (var media in mediaList)
+                {
+                    var uri = ResolveImageUrl(media);
+                    if (uri != null)
+                        uris.Add(uri);
+                }
             }
 
-            return types;
-        }*/
+            return uris;
+        }
 
         private string? ResolveImageUrl(JsonElement element)
         {
@@ -215,30 +151,26 @@ namespace EdgeContentPresenter.ContentSource
             return null;
         }
 
-        /*private string? ResolveNextContentIdentifier(JsonElement element, string relationName)
-        {
-            if (!element.TryGetProperty(relationName, out var relation))
-                return null;
-
-            var contentList = relation
-                .GetProperty("results")
-                .EnumerateArray();
-
-            var firstContent = contentList.FirstOrDefault();
-
-            if (firstContent.ValueKind != JsonValueKind.Undefined)
-                return firstContent
-                    .GetProperty("id")
-                    .GetString();
-
-            return null;
-        }*/
-
         private string? ResolveRichText(JsonElement element, string fieldName)
         {
             var data = element.GetProperty(fieldName);
             if (data.ValueKind != JsonValueKind.Undefined)
                 return data.ToString();
+
+            return null;
+        }
+
+        private string? ResolveLayout(JsonElement element, string fieldName)
+        {
+            var results = element
+                .GetProperty(fieldName)
+                .GetProperty("results")
+                .EnumerateArray();
+
+            if(results.Any() && results.MoveNext())
+            {
+                return results.Current.GetProperty("id").GetString();
+            }
 
             return null;
         }

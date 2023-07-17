@@ -4,14 +4,13 @@ namespace EdgeContentPresenter.Model
 {
     internal class TextContent : Content
     {
-        [JsonPropertyName("text_Title")]
+        [JsonPropertyName("title")]
         public string Title { get; set; }
 
-        [JsonPropertyName("text_Text")]
         public string Text { get; set; }
 
         public string PageHeaderImageUrl { get; set; }
 
-        public string MainImageUrl { get; set; }
+        public IReadOnlyList<string> ImageUrls { get; set; }
     }
 }

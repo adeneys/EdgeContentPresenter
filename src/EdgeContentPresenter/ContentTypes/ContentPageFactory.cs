@@ -11,11 +11,10 @@ namespace EdgeContentPresenter.ContentTypes
 
             ContentPage page = content switch
             {
-                BlogContent => new BlogContentPage(),
                 TitleContent => new TitleContentPage(),
                 BioContent => new BioContentPage(),
-                SectionTitleContent sectionTitleContent when sectionTitleContent.Layout == "SectionTitleLayout.LeftSubtitle" => new SectionSubtitlePageLeft(),
-                SectionTitleContent sectionTitleContent when sectionTitleContent.Layout == "SectionTitleLayout.RightSubtitle" => new SectionSubtitlePageRight(),
+                SectionTitleContent sectionTitleContent when sectionTitleContent.Layout == "taxonomy_layout_left" => new SectionSubtitlePageLeft(),
+                SectionTitleContent sectionTitleContent when sectionTitleContent.Layout == "taxonomy_layout_right" => new SectionSubtitlePageRight(),
                 SectionTitleContent => new SectionTitlePageLeft(),
                 TextContent => new TextContentPage(),
                 _ => null

@@ -63,23 +63,22 @@
 
 	<ItemGroup>
 		<None Remove="ContentSource\GraphQLQueries\GetBio.graphql" />
-		<None Remove="ContentSource\GraphQLQueries\GetContent.graphql" />
 		<None Remove="ContentSource\GraphQLQueries\GetNavigation.graphql" />
+		<None Remove="ContentSource\GraphQLQueries\GetSectionTitle.graphql" />
+		<None Remove="ContentSource\GraphQLQueries\GetText.graphql" />
 		<None Remove="ContentSource\GraphQLQueries\GetTitle.graphql" />
 		<None Remove="Resources\Images\splash.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<MauiAsset Include="ContentSource\GraphQLQueries\GetSectionTitle.graphql" />
+		<MauiAsset Include="ContentSource\GraphQLQueries\GetText.graphql" />
 		<MauiAsset Include="ContentSource\GraphQLQueries\GetBio.graphql" />
 		<MauiAsset Include="ContentSource\GraphQLQueries\GetTitle.graphql" />
-		<MauiAsset Include="ContentSource\GraphQLQueries\GetContent.graphql" />
 		<MauiAsset Include="ContentSource\GraphQLQueries\GetNavigation.graphql" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Compile Update="ContentTypes\BlogContentPage.xaml.cs">
-			<DependentUpon>BlogContentPage.xaml</DependentUpon>
-		</Compile>
 		<Compile Update="ContentTypes\SectionTitlePageLeft.xaml.cs">
 			<DependentUpon>SectionTitlePageLeft.xaml</DependentUpon>
 		</Compile>
@@ -87,9 +86,6 @@
 
 	<ItemGroup>
 		<MauiXaml Update="ContentTypes\BioContentPage.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
-		<MauiXaml Update="ContentTypes\BlogContentPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 		<MauiXaml Update="ContentTypes\SectionSubtitlePageLeft.xaml">

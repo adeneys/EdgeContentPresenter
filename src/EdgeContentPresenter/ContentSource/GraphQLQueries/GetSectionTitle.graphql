@@ -1,0 +1,21 @@
+﻿query GetSectionTitle($id: String!) {
+  sectionTitle(id: $id) {
+    id
+    title
+    subtitle
+    backgroundImage(first: 1) {
+      results {
+        fileName
+        fileUrl
+        fileWidth
+        fileHeight
+        fileSize
+      }
+    }
+    layout(first: 1) {
+      results {
+        id
+      }
+    }
+  }
+}

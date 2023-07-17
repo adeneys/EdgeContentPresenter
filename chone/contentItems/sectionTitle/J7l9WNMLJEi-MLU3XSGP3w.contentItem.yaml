@@ -1,0 +1,19 @@
+﻿id: J7l9WNMLJEi-MLU3XSGP3w
+name: GraphQL Introspection
+fields:
+  title:
+    value: GraphQL Introspection
+    type: ShortText
+  subtitle:
+    value: 
+    type: ShortText
+  layout:
+    value:
+    - id: noSubtitle
+    type: Select
+  backgroundImage:
+    value:
+    - type: Link
+      relatedType: Media
+      id: BHVb9qEiqEK0G5s8TUUSLg
+    type: Media
