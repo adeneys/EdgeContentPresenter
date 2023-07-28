@@ -67,6 +67,7 @@
 		<None Remove="ContentSource\GraphQLQueries\GetSectionTitle.graphql" />
 		<None Remove="ContentSource\GraphQLQueries\GetText.graphql" />
 		<None Remove="ContentSource\GraphQLQueries\GetTitle.graphql" />
+		<None Remove="Resources\Images\mastodon_logo.png" />
 		<None Remove="Resources\Images\splash.svg" />
 	</ItemGroup>
 

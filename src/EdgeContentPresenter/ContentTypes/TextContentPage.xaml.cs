@@ -7,7 +7,7 @@ public partial class TextContentPage : ContentPage
 		InitializeComponent();
 
 #if ANDROID
-        // The header image is too bit for Android to handle and crashes the app. Just remove it for now.
+        // The header image is too big for Android to handle and crashes the app. Just remove it for now.
         headerImage.Source = "";
 #endif
     }

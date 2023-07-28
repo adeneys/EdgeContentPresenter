@@ -88,6 +88,11 @@ namespace EdgeContentPresenter.ContentSource
             var contentElement = element.GetProperty("title");
             var result = Deserialize<TitleContent>(contentElement, type);
             result.BackgroundImageUrl = ResolveImageUrls(contentElement, "backgroundImage").FirstOrDefault();
+
+            var hashtags = result.HashTags.Split(',', StringSplitOptions.RemoveEmptyEntries);
+            if(hashtags.Any())
+                result.HashTags = string.Join("   ", hashtags.Select(x => "#" + x));
+
             return result;
         }
 
@@ -153,9 +158,16 @@ namespace EdgeContentPresenter.ContentSource
 
         private string? ResolveRichText(JsonElement element, string fieldName)
         {
+            // Rich text on CH-ONE is in ProseMirror format. https://prosemirror.net/
             var data = element.GetProperty(fieldName);
             if (data.ValueKind != JsonValueKind.Undefined)
-                return data.ToString();
+            {
+                var json = data.ToString();
+                var conv = new ProseMirrorConverter();
+                var html = conv.ToMauiHtml(json);
+
+                return html;
+            }
 
             return null;
         }

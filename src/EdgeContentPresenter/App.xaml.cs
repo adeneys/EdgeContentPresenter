@@ -6,5 +6,12 @@ public partial class App : Application
     {
         InitializeComponent();
         MainPage = appShell;
+
+        AppDomain.CurrentDomain.UnhandledException += ExceptionHandler;
+    }
+
+    private void ExceptionHandler(object sender, UnhandledExceptionEventArgs args)
+    {
+        var y = 0;
     }
 }

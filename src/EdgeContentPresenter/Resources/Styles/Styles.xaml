@@ -163,6 +163,11 @@
         </Setter>
     </Style>
 
+    <Style TargetType="Image" x:Key="Icon">
+        <Setter Property="WidthRequest" Value="56" />
+        <Setter Property="Margin" Value="0,0,15,0" />
+    </Style>
+
     <Style TargetType="Label" x:Key="Title-Title">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}" />
         <Setter Property="FontFamily" Value="OpenSansSemibold" />
@@ -216,7 +221,7 @@
         <Setter Property="FontSize" Value="42" />
     </Style>
 
-    <Style TargetType="Label" x:Key="Bio-Twitter">
+    <Style TargetType="Label" x:Key="Bio-Mastodon">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
         <Setter Property="FontSize" Value="42" />

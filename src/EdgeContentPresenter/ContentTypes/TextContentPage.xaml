@@ -31,12 +31,22 @@
                     TextType="Html"
                     Style="{DynamicResource Text-Text}" />
 
-                <!-- TODO: Bind many images -->
-                <Image 
-                    Source="{Binding MainImageUrl}"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Aspect="Center" />
+                <CollectionView ItemsSource="{Binding ImageUrls}" HorizontalOptions="Center" >
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Image 
+                                MaximumWidthRequest="500"
+                                Source="{Binding}"
+                                Margin="10">
+                            </Image>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
             </VerticalStackLayout>
         </ScrollView>
