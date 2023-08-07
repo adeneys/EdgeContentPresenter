@@ -1,0 +1,8 @@
+{
+  "yaml.schemas": {
+    "./.sitecore/contentItem.schema.json": "*.contentItem.yaml",
+    "./.sitecore/contentType.schema.json": "*.contentType.yaml",
+    "./.sitecore/media.schema.json": "*.media.yaml",
+    "./.sitecore/taxonomy.schema.json": "*.taxonomy.yaml"
+  }
+}

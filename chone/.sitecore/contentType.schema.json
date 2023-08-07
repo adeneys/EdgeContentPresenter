@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://content.sitecorecloud.io/contentType.schema.json",
+  "title": "Content Type",
+  "description": "The content type schema",
+  "type": "object",
+  "definitions": {
+    "field": {
+      "type": "object",
+      "title": "Content Type Field",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "The unique identifier of the field.",
+          "maxLength": 45
+        },
+        "name": {
+          "$ref": "#/definitions/localizedValues",
+          "title": "The name of the field."
+        },
+        "type": {
+          "type": "string",
+          "title": "The type of the field.",
+          "enum": [
+            "Boolean",
+            "DateTime",
+            "Integer",
+            "LongText",
+            "Media",
+            "Reference",
+            "RichText",
+            "ShortText",
+            "Select"
+          ]
+        },
+        "required": {
+          "type": "boolean",
+          "title": "Determines whether the field is required or not."
+        },
+        "helpText": {
+          "$ref": "#/definitions/localizedValues",
+          "title": "The help text of the field."
+        },
+        "reference": {
+          "type": "object",
+          "title": "The reference value.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "The unique identifier of the referenced entity.",
+              "maxLength": 45
+            }
+          },
+          "required": ["id", "type", "relatedType"]
+        }
+      },
+      "required": ["id", "name", "type"],
+      "if": {
+        "properties": {
+          "type": { "const": "Select" }
+        }
+      },
+      "then": {
+        "required": ["reference"]
+      }
+    },
+    "localizedValues": {
+      "type": "object",
+      "title": "Localized Value",
+      "patternProperties": {
+        "^[a-z]{2,3}(?:-[a-zA-Z]{4})?(?:-[A-Z]{2,3})?$": {
+          "type": "string",
+          "title": "The culture code of the value."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "The unique identifier of the content type.",
+      "maxLength": 45
+    },
+    "name": {
+      "$ref": "#/definitions/localizedValues",
+      "title": "The name of the content type."
+    },
+    "description": {
+      "$ref": "#/definitions/localizedValues",
+      "title": "The description of the content type.",
+      "maxLength": 256
+    },
+    "fields": {
+      "type": "array",
+      "title": "The fields of the content type.",
+      "maxItems": 50,
+      "items": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/field"
+          }
+        ]
+      }
+    }
+  },
+  "required": ["id", "name"]
+}

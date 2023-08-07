@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://content.sitecorecloud.io/media.schema.json",
+  "title": "Media Item",
+  "description": "The media item schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "The unique identifier of the media item."
+    },
+    "name": {
+      "type": "string",
+      "title": "The name of the media item.",
+      "maxLength": 256
+    },
+    "description": {
+      "type": "string",
+      "title": "The description of the media item.",
+      "maxLength": 256
+    }
+  },
+  "required": ["id", "name"]
+}

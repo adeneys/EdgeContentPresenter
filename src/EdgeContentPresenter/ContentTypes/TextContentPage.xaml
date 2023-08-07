@@ -31,22 +31,22 @@
                     TextType="Html"
                     Style="{DynamicResource Text-Text}" />
 
-                <CollectionView ItemsSource="{Binding ImageUrls}" HorizontalOptions="Center" >
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Horizontal"/>
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
+                <HorizontalStackLayout
+                    Spacing="25"
+                    Margin="25"
+                    HorizontalOptions="Center"
+                    BindableLayout.ItemsSource="{Binding ImageUrls}">
 
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
                             <Image 
                                 MaximumWidthRequest="500"
                                 Source="{Binding}"
-                                Margin="10">
-                            </Image>
-
+                                Margin="10"/>
                         </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                    </BindableLayout.ItemTemplate>
+
+                </HorizontalStackLayout>
 
             </VerticalStackLayout>
         </ScrollView>

@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://content.sitecorecloud.io/taxonomy.schema.json",
+  "title": "Taxonomy",
+  "description": "The taxonomy schema",
+  "type": "object",
+  "definitions": {
+    "localizedValues": {
+      "type": "object",
+      "title": "Localized Value",
+      "patternProperties": {
+        "^[a-z]{2,3}(?:-[a-zA-Z]{4})?(?:-[A-Z]{2,3})?$": {
+          "type": "string",
+          "title": "The culture code of the value."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "The unique identifier of the taxonomy."
+    },
+    "name": {
+      "$ref": "#/definitions/localizedValues",
+      "title": "The name of the taxonomy."
+    },
+    "values": {
+      "type": "array",
+      "title": "The values of the taxonomy.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "The identifier of the taxonomy."
+          },
+          "name": {
+            "$ref": "#/definitions/localizedValues",
+            "title": "The localized value of the taxonomy."
+          }
+        },
+        "required": ["id", "name"]
+      }
+    }
+  },
+  "required": ["id", "name", "values"]
+}
