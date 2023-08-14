@@ -1,0 +1,38 @@
+﻿id: social
+name:
+  en-US: Social
+description:
+  en-US: Social links for the author.
+fields:
+- id: slack
+  name:
+    en-US: Slack
+  type: ShortText
+  required: false
+  helpText:
+    en-US: User name on Sitecore Slack.
+  reference: 
+- id: mastodon
+  name:
+    en-US: Mastodon
+  type: ShortText
+  required: false
+  helpText:
+    en-US: User name on Mastodon.
+  reference: 
+- id: stackExchange
+  name:
+    en-US: Stack Exchange
+  type: ShortText
+  required: false
+  helpText:
+    en-US: User name on Sitecore Stack Exchange.
+  reference: 
+- id: backgroundImage
+  name:
+    en-US: Background Image
+  type: Media
+  required: false
+  helpText:
+    en-US: The background image to show on the page.
+  reference: 

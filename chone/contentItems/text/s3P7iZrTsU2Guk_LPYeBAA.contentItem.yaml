@@ -1,8 +1,8 @@
-﻿id: OHocPB0DfUm8urk1cofOkQ
-name: Agenda
+﻿id: s3P7iZrTsU2Guk_LPYeBAA
+name: GraphQL Introduction
 fields:
   title:
-    value: Agenda
+    value: GraphQL Introduction
     type: ShortText
   text:
     value: >-
@@ -10,10 +10,7 @@ fields:
         "type": "doc",
         "content": [
           {
-            "type": "orderedList",
-            "attrs": {
-              "start": 1
-            },
+            "type": "bulletList",
             "content": [
               {
                 "type": "listItem",
@@ -23,7 +20,7 @@ fields:
                     "content": [
                       {
                         "type": "text",
-                        "text": "GraphQL & Introspection"
+                        "text": "Query language for structured data"
                       }
                     ]
                   }
@@ -37,7 +34,7 @@ fields:
                     "content": [
                       {
                         "type": "text",
-                        "text": "XM Schema"
+                        "text": "Allows retrieval of multiple objects at once"
                       }
                     ]
                   }
@@ -51,7 +48,7 @@ fields:
                     "content": [
                       {
                         "type": "text",
-                        "text": "Content Hub Schema"
+                        "text": "Allows retrieval of related objects"
                       }
                     ]
                   }
@@ -65,7 +62,17 @@ fields:
                     "content": [
                       {
                         "type": "text",
-                        "text": "Differences in Content Hub and Content Hub ONE"
+                        "marks": [
+                          {
+                            "type": "link",
+                            "attrs": {
+                              "href": "https://graphql.org/",
+                              "target": "_blank",
+                              "class": null
+                            }
+                          }
+                        ],
+                        "text": "https://graphql.org/"
                       }
                     ]
                   }
@@ -86,8 +93,5 @@ fields:
     value:
     - type: Link
       relatedType: Media
-      id: n55tQfev00eupv1L_Qemfg
-    - type: Link
-      relatedType: Media
-      id: RHB9UqLON0a6s0BVmTKP-w
+      id: 6WbBHJWuIUi8yY-sJGkZPQ
     type: Media

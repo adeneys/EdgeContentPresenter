@@ -1,0 +1,18 @@
+﻿id: caZp73OwA0ekNNScOoip9g
+name: Social
+fields:
+  slack:
+    value: '@Alistair Deneys'
+    type: ShortText
+  mastodon:
+    value: '@adeneys@hachyderm.io'
+    type: ShortText
+  stackExchange:
+    value: alistair-deneys
+    type: ShortText
+  backgroundImage:
+    value:
+    - type: Link
+      relatedType: Media
+      id: GUz5_HtoPkKJrLpogW7mEA
+    type: Media

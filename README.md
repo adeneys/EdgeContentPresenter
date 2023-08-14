@@ -16,3 +16,4 @@ To import the content into a Content Hub ONE tenant, first [Install the Content 
 
 	dotnet ch-one-cli serialization push content-type
 	dotnet ch-one-cli serialization push content-item
+	dotnet ch-one-cli serialization push media

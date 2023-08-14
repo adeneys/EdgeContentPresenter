@@ -1,8 +1,8 @@
 ﻿id: J7l9WNMLJEi-MLU3XSGP3w
-name: GraphQL Introspection
+name: GraphQL & Introspection
 fields:
   title:
-    value: GraphQL Introspection
+    value: GraphQL & Introspection
     type: ShortText
   subtitle:
     value: 
