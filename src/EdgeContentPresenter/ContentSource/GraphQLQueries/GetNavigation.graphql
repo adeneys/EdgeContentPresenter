@@ -24,6 +24,10 @@
             id
             name
           }
+          ... on Social {
+            id
+            name
+          }
         }
       }
     }

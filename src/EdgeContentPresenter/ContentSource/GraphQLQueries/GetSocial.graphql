@@ -1,0 +1,18 @@
+﻿query GetSocial($id: String!) {
+  social(id: $id) {
+    id
+    title
+    slack
+    mastodon
+    stackExchange
+    backgroundImage(first: 1) {
+      results {
+        fileName
+        fileUrl
+        fileWidth
+        fileHeight
+        fileSize
+      }
+    }
+  }
+}

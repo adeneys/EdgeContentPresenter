@@ -65,6 +65,7 @@
 		<None Remove="ContentSource\GraphQLQueries\GetBio.graphql" />
 		<None Remove="ContentSource\GraphQLQueries\GetNavigation.graphql" />
 		<None Remove="ContentSource\GraphQLQueries\GetSectionTitle.graphql" />
+		<None Remove="ContentSource\GraphQLQueries\GetSocial.graphql" />
 		<None Remove="ContentSource\GraphQLQueries\GetText.graphql" />
 		<None Remove="ContentSource\GraphQLQueries\GetTitle.graphql" />
 		<None Remove="Resources\Images\mastodon_logo.png" />
@@ -75,6 +76,7 @@
 		<MauiAsset Include="ContentSource\GraphQLQueries\GetSectionTitle.graphql" />
 		<MauiAsset Include="ContentSource\GraphQLQueries\GetText.graphql" />
 		<MauiAsset Include="ContentSource\GraphQLQueries\GetBio.graphql" />
+		<MauiAsset Include="ContentSource\GraphQLQueries\GetSocial.graphql" />
 		<MauiAsset Include="ContentSource\GraphQLQueries\GetTitle.graphql" />
 		<MauiAsset Include="ContentSource\GraphQLQueries\GetNavigation.graphql" />
 	</ItemGroup>
@@ -97,6 +99,9 @@
 		</MauiXaml>
 		<MauiXaml Update="ContentTypes\SectionTitlePageLeft.xaml">
 			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="ContentTypes\SocialContentPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 		<MauiXaml Update="ContentTypes\TextContentPage.xaml">
 			<Generator>MSBuild:Compile</Generator>

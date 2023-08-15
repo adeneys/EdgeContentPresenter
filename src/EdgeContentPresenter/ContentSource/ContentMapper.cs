@@ -71,6 +71,7 @@ namespace EdgeContentPresenter.ContentSource
                 "Bio" => DeserializeBioContent(element, type),
                 "Text" => DeserializeTextContent(element, type),
                 "SectionTitle" => DeserializeSectionTitleContent(element, type),
+                "Social" => DeserializeSocialContent(element, type),
                 _ => throw new EdgeException("Unknown content type " + type)
             };
         }
@@ -122,6 +123,15 @@ namespace EdgeContentPresenter.ContentSource
             var result = Deserialize<SectionTitleContent>(contentElement, type);
             result.BackgroundImageUrl = ResolveImageUrls(contentElement, "backgroundImage").FirstOrDefault();
             result.Layout = ResolveLayout(contentElement, "layout");
+            return result;
+        }
+
+        private Content? DeserializeSocialContent(JsonElement element, string type)
+        {
+            var contentElement = element.GetProperty("social");
+            var result = Deserialize<SocialContent>(contentElement, type);
+            result.BackgroundImageUrl = ResolveImageUrls(contentElement, "backgroundImage").FirstOrDefault();
+
             return result;
         }
 

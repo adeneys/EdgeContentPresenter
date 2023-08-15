@@ -5,3 +5,4 @@ Nice to have
 - arrow shortcut keys for navigation
 - align mastodon logo with text on bio page
 - Stretch header image entire width of page
+- Make margins on social page relative

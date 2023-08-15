@@ -17,6 +17,7 @@ namespace EdgeContentPresenter.ContentTypes
                 SectionTitleContent sectionTitleContent when sectionTitleContent.Layout == "taxonomy_layout_right" => new SectionSubtitlePageRight(),
                 SectionTitleContent => new SectionTitlePageLeft(),
                 TextContent => new TextContentPage(),
+                SocialContent => new SocialContentPage(),
                 _ => null
             };
 
