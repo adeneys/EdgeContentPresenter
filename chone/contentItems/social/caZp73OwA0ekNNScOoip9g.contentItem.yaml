@@ -1,6 +1,9 @@
 ﻿id: caZp73OwA0ekNNScOoip9g
 name: Social
 fields:
+  title:
+    value: Social
+    type: ShortText
   slack:
     value: '@Alistair Deneys'
     type: ShortText
