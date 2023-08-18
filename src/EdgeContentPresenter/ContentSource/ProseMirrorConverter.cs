@@ -8,7 +8,7 @@ namespace EdgeContentPresenter.ContentSource
     internal class ProseMirrorConverter : IProseMirrorConverter
     {
         private readonly StringBuilder _output = new();
-        private bool _surpressParagraphTags = false;
+        private int _surpressParagraphTagCount = 0;
 
         public string ToMauiHtml(string proseMirrorJsonText)
         {
@@ -33,19 +33,19 @@ namespace EdgeContentPresenter.ContentSource
                     break;
 
                 case "paragraph":
-                    if (!_surpressParagraphTags) _output.Append("<p>");
+                    if (_surpressParagraphTagCount == 0) _output.Append("<p>");
                     ProcessChildren(element);
-                    if (!_surpressParagraphTags) _output.Append("</p>");
+                    if (_surpressParagraphTagCount == 0) _output.Append("</p>");
 
                     break;
 
                 case "orderedList":
                 case "bulletList":
-                    _surpressParagraphTags = true;
+                    _surpressParagraphTagCount++;
                     _output.Append("<ul>");
                     ProcessChildren(element);
                     _output.Append("</ul>");
-                    _surpressParagraphTags = false;
+                    _surpressParagraphTagCount--;
                     break;
 
                 case "listItem":
