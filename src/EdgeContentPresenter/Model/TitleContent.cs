@@ -16,6 +16,6 @@ namespace EdgeContentPresenter.Model
         [JsonPropertyName("hashtags")]
         public string HashTags { get; set; }
 
-        public string BackgroundImageUrl { get; set; }
+        public EdgeImage BackgroundImage { get; set; }
     }
 }

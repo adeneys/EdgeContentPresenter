@@ -1,3 +1,5 @@
+using EdgeContentPresenter.Model;
+
 namespace EdgeContentPresenter.ContentTypes;
 
 public partial class TextContentPage : ContentPage
@@ -11,4 +13,6 @@ public partial class TextContentPage : ContentPage
         headerImage.Source = "";
 #endif
     }
+
+    public int MaximumImageWidth => ((TextContent)BindingContext).MaximumImageWidth;
 }

@@ -8,7 +8,7 @@
     <AbsoluteLayout>
         <Image 
             x:Name="headerImage"
-            Source="{Binding PageHeaderImageUrl}"
+            Source="{Binding PageHeaderImage.Uri}"
             Aspect="AspectFill" />
 
         <VerticalStackLayout
@@ -25,7 +25,7 @@
                 Margin="25">
 
                 <Image 
-                    Source="{Binding ImageUrl}"
+                    Source="{Binding Image.Uri}"
                     WidthRequest="500" />
 
                 <VerticalStackLayout

@@ -88,7 +88,7 @@ namespace EdgeContentPresenter.ContentSource
         {
             var contentElement = element.GetProperty("title");
             var result = Deserialize<TitleContent>(contentElement, type);
-            result.BackgroundImageUrl = ResolveImageUrls(contentElement, "backgroundImage").FirstOrDefault();
+            result.BackgroundImage = ResolveImages(contentElement, "backgroundImage").FirstOrDefault();
 
             var hashtags = result.HashTags.Split(',', StringSplitOptions.RemoveEmptyEntries);
             if(hashtags.Any())
@@ -102,8 +102,8 @@ namespace EdgeContentPresenter.ContentSource
             var contentElement = element.GetProperty("bio");
             var result = Deserialize<BioContent>(contentElement, type);
             result.Highlights = ResolveRichText(contentElement, "highlights");
-            result.ImageUrl = ResolveImageUrls(contentElement, "profileImage").FirstOrDefault();
-            result.PageHeaderImageUrl = ResolveImageUrls(contentElement, "headerImage").FirstOrDefault();
+            result.Image = ResolveImages(contentElement, "profileImage").FirstOrDefault();
+            result.PageHeaderImage = ResolveImages(contentElement, "headerImage").FirstOrDefault();
             return result;
         }
 
@@ -112,8 +112,8 @@ namespace EdgeContentPresenter.ContentSource
             var contentElement = element.GetProperty("text");
             var result = Deserialize<TextContent>(contentElement, type);
             result.Text = ResolveRichText(contentElement, "text");
-            result.PageHeaderImageUrl = ResolveImageUrls(contentElement, "headerImage").FirstOrDefault();
-            result.ImageUrls = ResolveImageUrls(contentElement, "images").AsReadOnly();
+            result.PageHeaderImage = ResolveImages(contentElement, "headerImage").FirstOrDefault();
+            result.Images = ResolveImages(contentElement, "images").AsReadOnly();
             return result;
         }
 
@@ -121,7 +121,7 @@ namespace EdgeContentPresenter.ContentSource
         {
             var contentElement = element.GetProperty("sectionTitle");
             var result = Deserialize<SectionTitleContent>(contentElement, type);
-            result.BackgroundImageUrl = ResolveImageUrls(contentElement, "backgroundImage").FirstOrDefault();
+            result.BackgroundImage = ResolveImages(contentElement, "backgroundImage").FirstOrDefault();
             result.Layout = ResolveLayout(contentElement, "layout");
             return result;
         }
@@ -130,14 +130,14 @@ namespace EdgeContentPresenter.ContentSource
         {
             var contentElement = element.GetProperty("social");
             var result = Deserialize<SocialContent>(contentElement, type);
-            result.BackgroundImageUrl = ResolveImageUrls(contentElement, "backgroundImage").FirstOrDefault();
+            result.BackgroundImage = ResolveImages(contentElement, "backgroundImage").FirstOrDefault();
 
             return result;
         }
 
-        private IList<string> ResolveImageUrls(JsonElement element, string relationName)
+        private IList<EdgeImage> ResolveImages(JsonElement element, string relationName)
         {
-            var uris = new List<string>();
+            var images = new List<EdgeImage>();
 
             var mediaList = element
                 .GetProperty(relationName)
@@ -148,29 +148,53 @@ namespace EdgeContentPresenter.ContentSource
             {
                 foreach (var media in mediaList)
                 {
-                    var uri = ResolveImageUrl(media);
-                    if (uri != null)
-                        uris.Add(uri);
+                    var rawUri = ResolveStringProperty(media, "fileUrl");
+                    if(rawUri != null)
+                    {
+                        if(Uri.TryCreate(rawUri, UriKind.Absolute, out var uri))
+                        {
+                            var width = ResolveIntProperty(media, "fileWidth");
+                            var height = ResolveIntProperty(media, "fileHeight");
+
+                            var image = new EdgeImage
+                            {
+                                Uri = uri,
+                                Width = width,
+                                Height = height
+                            };
+
+                            images.Add(image);
+                        }
+                    }
                 }
             }
 
-            return uris;
+            return images;
         }
 
-        private string? ResolveImageUrl(JsonElement element)
+        private string? ResolveStringProperty(JsonElement element, string name)
         {
-            var url = element.GetProperty("fileUrl");
-            if(url.ValueKind != JsonValueKind.Undefined)
-                return url.GetString();
+            var prop = element.GetProperty(name);
+            if (prop.ValueKind != JsonValueKind.Undefined)
+                return prop.GetString();
 
             return null;
+        }
+
+        private int ResolveIntProperty(JsonElement element, string name)
+        {
+            var prop = element.GetProperty(name);
+            if (prop.ValueKind != JsonValueKind.Undefined)
+                return prop.GetInt32();
+
+            return 0;
         }
 
         private string? ResolveRichText(JsonElement element, string fieldName)
         {
             // Rich text on CH-ONE is in ProseMirror format. https://prosemirror.net/
             var data = element.GetProperty(fieldName);
-            if (data.ValueKind != JsonValueKind.Undefined)
+            if (data.ValueKind != JsonValueKind.Undefined && data.ValueKind != JsonValueKind.Null)
             {
                 var json = data.ToString();
                 var conv = new ProseMirrorConverter();

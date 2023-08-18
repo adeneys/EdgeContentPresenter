@@ -18,8 +18,8 @@ namespace EdgeContentPresenter.Model
         [JsonPropertyName("mastodon")]
         public string MastodonUrl { get; set; }
 
-        public string PageHeaderImageUrl { get; set; }
+        public EdgeImage PageHeaderImage { get; set; }
 
-        public string ImageUrl { get; set; }
+        public EdgeImage Image { get; set; }
     }
 }

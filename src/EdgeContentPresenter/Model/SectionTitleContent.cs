@@ -12,6 +12,6 @@ namespace EdgeContentPresenter.Model
 
         public string Layout { get; set; }
 
-        public string BackgroundImageUrl { get; set; }
+        public EdgeImage BackgroundImage { get; set; }
     }
 }

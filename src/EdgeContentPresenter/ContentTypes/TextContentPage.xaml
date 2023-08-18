@@ -2,13 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EdgeContentPresenter.ContentTypes.TextContentPage"
+             x:Name="Page"
              Title="{Binding Title}"
              BackgroundColor="{DynamicResource White}">
 
     <AbsoluteLayout>
         <Image 
             x:Name="headerImage"
-            Source="{Binding PageHeaderImageUrl}"
+            Source="{Binding PageHeaderImage.Uri}"
             Aspect="AspectFill" />
 
         <Label 
@@ -35,13 +36,16 @@
                     Spacing="25"
                     Margin="25"
                     HorizontalOptions="Center"
-                    BindableLayout.ItemsSource="{Binding ImageUrls}">
+                    BindableLayout.ItemsSource="{Binding Images}">
 
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <Image 
-                                MaximumWidthRequest="500"
-                                Source="{Binding}"
+                                MaximumWidthRequest="{Binding MaximumImageWidth, Source={x:Reference Page}}"
+                                MaximumHeightRequest="600"
+                                WidthRequest="{Binding Width}"
+                                HeightRequest="{Binding Height}"
+                                Source="{Binding Uri}"
                                 Margin="10"/>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>

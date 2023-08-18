@@ -16,6 +16,6 @@ namespace EdgeContentPresenter.Model
         [JsonPropertyName("stackExchange")]
         public string StackExchange { get; set; }
 
-        public string BackgroundImageUrl { get; set; }
+        public EdgeImage BackgroundImage { get; set; }
     }
 }
