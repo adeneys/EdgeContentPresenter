@@ -9,8 +9,7 @@ namespace EdgeContentPresenter.ContentSource
         private readonly IContentRepository _contentRepository;
         private readonly IContentPageFactory _contentPageFactory;
 
-        private IList<NavigablePage>? _navigablePages;
-
+        public IList<NavigablePage>? NavigablePages { get; private set; }
         public Page CurrentPage { get; private set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -23,17 +22,18 @@ namespace EdgeContentPresenter.ContentSource
 
         public async Task LoadNavigation(string name)
         {
-            _navigablePages = await _contentRepository.GetNavigationAsync(name);
+            NavigablePages = await _contentRepository.GetNavigationAsync(name);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NavigablePages)));
 
-            if (_navigablePages.Count > 0)
-                await LoadContent(_navigablePages[0].Identifier);
+            if (NavigablePages.Count > 0)
+                await LoadContent(NavigablePages[0].Identifier);
         }
 
         public async Task LoadContent(string identifier)
         {
             try
             {
-                var navigablePage = _navigablePages.FirstOrDefault(x => x.Identifier == identifier);
+                var navigablePage = NavigablePages.FirstOrDefault(x => x.Identifier == identifier);
                 if (navigablePage == null)
                     throw new EdgeException($"Failed to find page '{identifier}' in navigation");
 
@@ -60,14 +60,14 @@ namespace EdgeContentPresenter.ContentSource
         private void ExtendContent(Content content)
         {
             // Find the index of the content in the navigable pages list
-            for (var i = 0; i < _navigablePages.Count; i++)
+            for (var i = 0; i < NavigablePages.Count; i++)
             {
-                if (_navigablePages[i].Identifier == content.Identifier)
+                if (NavigablePages[i].Identifier == content.Identifier)
                 {
-                    if (i < _navigablePages.Count - 1)
+                    if (i < NavigablePages.Count - 1)
                     {
-                        content.NextContentIdentifier = _navigablePages[i + 1].Identifier;
-                        content.NextContentType = _navigablePages[i + 1].Type;
+                        content.NextContentIdentifier = NavigablePages[i + 1].Identifier;
+                        content.NextContentType = NavigablePages[i + 1].Type;
                     }
 
                     return;

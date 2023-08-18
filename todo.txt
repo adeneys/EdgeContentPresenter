@@ -1,14 +1,7 @@
-Must
-- 11ty: Mastodon logo on bio page
-- 11ty: throw correct error for auth issues to Edge
-
 Nice to have
 
-- App: Add list to toolbar to jump to page
 - App: arrow shortcut keys for navigation
 - App: align mastodon logo with text on bio page
 - App: Stretch header image entire width of page
 - App: Make margins on social page relative
 - App: Remove next/previous pages from model and rely on navigation instead
-
-

@@ -9,6 +9,11 @@
     <Shell.ToolbarItems>
 
         <ToolbarItem
+            Text="Navigate"
+            IconImageSource="compass.png"
+            Clicked="OpenPages" />
+
+        <ToolbarItem
             Text="Forward"
             IconImageSource="arrow_right.png"
             Clicked="NextPage" />

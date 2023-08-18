@@ -13,6 +13,7 @@ namespace EdgeContentPresenter.ContentSource
         private readonly IContentRepository _contentRepository;
         private readonly IContentPageFactory _contentPageFactory;
 
+        public IList<NavigablePage>? NavigablePages => _inner.NavigablePages;
         public Page CurrentPage => _inner.CurrentPage;
 
         public event PropertyChangedEventHandler PropertyChanged;

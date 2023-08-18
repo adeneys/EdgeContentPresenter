@@ -29,12 +29,38 @@ public partial class AppShell : Shell
     private async void PageControllerPropertyChange(object sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName == nameof(IContentPageController.CurrentPage))
-            await Navigation.PushAsync(_pageController.CurrentPage, true);
+        {
+            // If the page is already in the nav stack, jump back to it.
+            if (Navigation.NavigationStack.Contains(_pageController.CurrentPage))
+            {
+                while (Navigation.NavigationStack.Last() != _pageController.CurrentPage)
+                {
+                    await Navigation.PopAsync();
+                }
+            }
+            else
+            {
+                await Navigation.PushAsync(_pageController.CurrentPage, true);
+            }
+        }
     }
 
     private async void OpenSettings(object sender, EventArgs e)
     {
         await Current.GoToAsync(SettingsPageRoute, true);
+    }
+
+    private async void OpenPages(object sender, EventArgs e)
+    {
+        var pages = _pageController.NavigablePages;
+        var pageName = await DisplayActionSheet("Navigate to:", "Cancel", null, pages.Select(x => x.Name).ToArray());
+
+        if(!string.IsNullOrEmpty(pageName))
+        {
+            var page = pages.FirstOrDefault(x => x.Name == pageName);
+            if (page != null)
+                await _pageController.LoadContent(page.Identifier);
+        }
     }
 
     private async void NextPage(object sender, EventArgs e)

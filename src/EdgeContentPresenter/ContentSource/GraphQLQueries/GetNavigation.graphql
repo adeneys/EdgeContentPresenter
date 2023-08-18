@@ -5,7 +5,7 @@
     results {
       id
       name
-      pages {
+      pages(first: 50) {
         results {
           __typename
           ... on Title {
