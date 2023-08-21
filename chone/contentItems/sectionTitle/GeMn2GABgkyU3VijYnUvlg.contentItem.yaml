@@ -1,19 +1,19 @@
-﻿id: J7l9WNMLJEi-MLU3XSGP3w
-name: GraphQL & Introspection
+﻿id: GeMn2GABgkyU3VijYnUvlg
+name: Sponsors
 fields:
   title:
-    value: GraphQL & Introspection
+    value: Thank You
     type: ShortText
   subtitle:
     value: 
     type: ShortText
   layout:
     value:
-    - id: noSubtitle
+    - id: right
     type: Select
   backgroundImage:
     value:
     - type: Link
       relatedType: Media
-      id: M_0heD9WqkKFfC0EaAAyhQ
+      id: H8ptfxnQxkSVhGquZ30DXQ
     type: Media

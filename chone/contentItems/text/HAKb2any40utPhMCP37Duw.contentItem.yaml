@@ -1,0 +1,21 @@
+﻿id: HAKb2any40utPhMCP37Duw
+name: Dynamic Schema Generation
+fields:
+  title:
+    value: Dynamic Schema Generation
+    type: ShortText
+  text:
+    value: 
+    type: RichText
+  headerImage:
+    value:
+    - type: Link
+      relatedType: Media
+      id: jVdPsg1VMkCsqtU5fwYqhw
+    type: Media
+  images:
+    value:
+    - type: Link
+      relatedType: Media
+      id: Q4zn3uRHHEGbwsKx000Pfg
+    type: Media

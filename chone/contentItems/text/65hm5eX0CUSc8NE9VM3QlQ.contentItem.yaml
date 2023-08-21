@@ -1,0 +1,21 @@
+﻿id: 65hm5eX0CUSc8NE9VM3QlQ
+name: Headless Architecure
+fields:
+  title:
+    value: Headless Architecure
+    type: ShortText
+  text:
+    value: 
+    type: RichText
+  headerImage:
+    value:
+    - type: Link
+      relatedType: Media
+      id: jVdPsg1VMkCsqtU5fwYqhw
+    type: Media
+  images:
+    value:
+    - type: Link
+      relatedType: Media
+      id: m5K92pt_N0SsCkSyf8jkxA
+    type: Media

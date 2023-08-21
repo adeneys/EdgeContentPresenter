@@ -19,6 +19,20 @@ fields:
             ]
           },
           {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ],
+                "text": "XM"
+              }
+            ]
+          },
+          {
             "type": "bulletList",
             "content": [
               {
@@ -29,40 +43,7 @@ fields:
                     "content": [
                       {
                         "type": "text",
-                        "text": "XM"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "bulletList",
-                    "content": [
-                      {
-                        "type": "listItem",
-                        "content": [
-                          {
-                            "type": "paragraph",
-                            "content": [
-                              {
-                                "type": "text",
-                                "text": "XM (on-premise, managed cloud)"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "type": "listItem",
-                        "content": [
-                          {
-                            "type": "paragraph",
-                            "content": [
-                              {
-                                "type": "text",
-                                "text": "XM Cloud"
-                              }
-                            ]
-                          }
-                        ]
+                        "text": "XM (on-premise, managed cloud)"
                       }
                     ]
                   }
@@ -76,45 +57,59 @@ fields:
                     "content": [
                       {
                         "type": "text",
-                        "text": "Dynamic"
+                        "text": "XM Cloud"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ],
+                "text": "Dynamic"
+              }
+            ]
+          },
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Content Hub"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Content Hub ONE"
                       }
                     ]
                   },
                   {
-                    "type": "bulletList",
-                    "content": [
-                      {
-                        "type": "listItem",
-                        "content": [
-                          {
-                            "type": "paragraph",
-                            "content": [
-                              {
-                                "type": "text",
-                                "text": "Content Hub"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "type": "listItem",
-                        "content": [
-                          {
-                            "type": "paragraph",
-                            "content": [
-                              {
-                                "type": "text",
-                                "text": "Content Hub ONE"
-                              }
-                            ]
-                          },
-                          {
-                            "type": "paragraph"
-                          }
-                        ]
-                      }
-                    ]
+                    "type": "paragraph"
                   }
                 ]
               }

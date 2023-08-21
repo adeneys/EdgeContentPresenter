@@ -1,0 +1,80 @@
+﻿id: Kd-xLQJTqUirbRPYcu7Ywg
+name: References
+fields:
+  title:
+    value: References
+    type: ShortText
+  text:
+    value: >-
+      {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "http://www.codeflood.net/blog/2022/12/20/experience-edge-schema-for-xm-tenants/",
+                      "target": "_blank",
+                      "class": null
+                    }
+                  }
+                ],
+                "text": "https://www.codeflood.net/blog/2022/12/20/experience-edge-schema-for-xm-tenants/"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "http://www.codeflood.net/blog/2023/05/23/experience-edge-schema-for-contenthub-tenants/",
+                      "target": "_blank",
+                      "class": null
+                    }
+                  }
+                ],
+                "text": "https://www.codeflood.net/blog/2023/05/23/experience-edge-schema-for-contenthub-tenants/"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "http://www.codeflood.net/blog/2023/07/18/experience-edge-schema-for-content-hub-one-tenants/",
+                      "target": "_blank",
+                      "class": null
+                    }
+                  }
+                ],
+                "text": "https://www.codeflood.net/blog/2023/07/18/experience-edge-schema-for-content-hub-one-tenants/"
+              }
+            ]
+          }
+        ]
+      }
+    type: RichText
+  headerImage:
+    value:
+    - type: Link
+      relatedType: Media
+      id: jVdPsg1VMkCsqtU5fwYqhw
+    type: Media
+  images:
+    value: []
+    type: Media

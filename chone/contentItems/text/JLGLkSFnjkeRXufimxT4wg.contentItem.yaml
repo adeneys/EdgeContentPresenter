@@ -1,0 +1,35 @@
+﻿id: JLGLkSFnjkeRXufimxT4wg
+name: CH data model
+fields:
+  title:
+    value: Content Hub Data Model
+    type: ShortText
+  text:
+    value: >-
+      {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Entities, Properties and Relations defined by an Entity Definition."
+              }
+            ]
+          }
+        ]
+      }
+    type: RichText
+  headerImage:
+    value:
+    - type: Link
+      relatedType: Media
+      id: jVdPsg1VMkCsqtU5fwYqhw
+    type: Media
+  images:
+    value:
+    - type: Link
+      relatedType: Media
+      id: IDwqcVM_nEm4qVNGWQ31jg
+    type: Media

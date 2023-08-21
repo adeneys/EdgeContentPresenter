@@ -1,0 +1,35 @@
+﻿id: mjI9JiJshEmOjNYcjTDczA
+name: CH-ONE data model
+fields:
+  title:
+    value: Content Hub ONE Data Model
+    type: ShortText
+  text:
+    value: >-
+      {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Content Items, Fields and References defined by a Content Type."
+              }
+            ]
+          }
+        ]
+      }
+    type: RichText
+  headerImage:
+    value:
+    - type: Link
+      relatedType: Media
+      id: jVdPsg1VMkCsqtU5fwYqhw
+    type: Media
+  images:
+    value:
+    - type: Link
+      relatedType: Media
+      id: u_y8q-3ETU2fwNaCnDzcZA
+    type: Media

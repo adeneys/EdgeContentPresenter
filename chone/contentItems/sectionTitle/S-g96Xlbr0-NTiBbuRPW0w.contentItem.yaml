@@ -1,11 +1,11 @@
-﻿id: kJ6PHqj29UGlHsJjLJa5CA
-name: Left subtitle
+﻿id: S-g96Xlbr0-NTiBbuRPW0w
+name: GraphQL Schema
 fields:
   title:
-    value: Left Subtitle
+    value: GraphQL Schema
     type: ShortText
   subtitle:
-    value: Another subtitle
+    value: GraphQL schema for each source system
     type: ShortText
   layout:
     value:

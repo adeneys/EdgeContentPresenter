@@ -1,16 +1,15 @@
-﻿id: HgbvpUh0nkiWM_CtC-sG0g
-name: Right subtitle
+﻿id: tv_yh2tGOkmAB8BMqs_Lxw
+name: Data Models
 fields:
   title:
-    value: Right subtitle
+    value: Data Models
     type: ShortText
   subtitle:
-    value: This is a subtitle
+    value: Data models of different source systems
     type: ShortText
   layout:
     value:
     - id: right
-    - id: left
     type: Select
   backgroundImage:
     value:

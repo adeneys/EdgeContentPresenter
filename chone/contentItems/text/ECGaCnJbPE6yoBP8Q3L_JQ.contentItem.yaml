@@ -1,0 +1,21 @@
+﻿id: ECGaCnJbPE6yoBP8Q3L_JQ
+name: XM Schema Generation
+fields:
+  title:
+    value: XM Schema Generation
+    type: ShortText
+  text:
+    value: 
+    type: RichText
+  headerImage:
+    value:
+    - type: Link
+      relatedType: Media
+      id: jVdPsg1VMkCsqtU5fwYqhw
+    type: Media
+  images:
+    value:
+    - type: Link
+      relatedType: Media
+      id: tF_lcUSX0EekL-WleGXZHQ
+    type: Media
