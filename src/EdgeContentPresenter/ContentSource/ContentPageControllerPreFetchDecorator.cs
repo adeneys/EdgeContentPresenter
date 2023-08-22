@@ -45,9 +45,11 @@ namespace EdgeContentPresenter.ContentSource
             {
                 if (CurrentPage.BindingContext is Content content)
                 {
-                    if (!string.IsNullOrEmpty(content.NextContentIdentifier))
+                    var nextPage = _inner.NavigablePages.FindNextPage(content.Identifier);
+
+                    if (nextPage != null)
                     {
-                        var nextContent = await _contentRepository.GetContentAsync(content.NextContentType, content.NextContentIdentifier);
+                        var nextContent = await _contentRepository.GetContentAsync(nextPage.Type, nextPage.Identifier);
                         _contentPageFactory.CreatePageForContent(nextContent);
                     }
                 }

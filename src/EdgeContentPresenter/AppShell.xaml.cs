@@ -69,13 +69,15 @@ public partial class AppShell : Shell
         if (currentContent == null)
             return;
 
-        if (currentContent.NextContentIdentifier == null)
+        var nextContent = _pageController.NavigablePages.FindNextPage(currentContent.Identifier);
+
+        if (nextContent == null)
             await DisplayAlert("No Content", "There is no next content", "OK");
         else
         {
             try
             {
-                await _pageController.LoadContent(currentContent.NextContentIdentifier);
+                await _pageController.LoadContent(nextContent.Identifier);
             }
             catch (Exception ex)
             {

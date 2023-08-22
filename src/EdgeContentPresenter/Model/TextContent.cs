@@ -9,7 +9,7 @@ namespace EdgeContentPresenter.Model
 
         public string Text { get; set; }
 
-        public EdgeImage PageHeaderImage { get; set; }
+        public EdgeImage? PageHeaderImage { get; set; }
 
         public IReadOnlyList<EdgeImage> Images { get; set; }
 

@@ -44,7 +44,6 @@ namespace EdgeContentPresenter.ContentSource
                 }
                 else
                 {
-                    ExtendContent(content);
                     var page = _contentPageFactory.CreatePageForContent(content);
                     CurrentPage = page;
                 }
@@ -54,24 +53,6 @@ namespace EdgeContentPresenter.ContentSource
             catch (Exception ex)
             {
                 throw new EdgeException($"Failed to load content with identifier {identifier}", ex);
-            }
-        }
-
-        private void ExtendContent(Content content)
-        {
-            // Find the index of the content in the navigable pages list
-            for (var i = 0; i < NavigablePages.Count; i++)
-            {
-                if (NavigablePages[i].Identifier == content.Identifier)
-                {
-                    if (i < NavigablePages.Count - 1)
-                    {
-                        content.NextContentIdentifier = NavigablePages[i + 1].Identifier;
-                        content.NextContentType = NavigablePages[i + 1].Type;
-                    }
-
-                    return;
-                }
             }
         }
     }

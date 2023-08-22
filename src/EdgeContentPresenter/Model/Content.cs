@@ -8,9 +8,5 @@ namespace EdgeContentPresenter.Model
         public string Identifier { get; set; }
 
         public string Type { get; set; }
-
-        public string? NextContentIdentifier { get; set; }
-
-        public string? NextContentType { get; set; }
     }
 }
