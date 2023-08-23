@@ -251,7 +251,6 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}" />
         <Setter Property="FontFamily" Value="OpenSansSemibold" />
         <Setter Property="FontSize" Value="28" />
-        <Setter Property="Margin" Value="0,240,0,0" />
     </Style>
 
     <Style TargetType="ListView">

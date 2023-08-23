@@ -11,12 +11,8 @@
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All" />
 
-        <!-- TODO: Set these values proportially -->
         <HorizontalStackLayout
-            AbsoluteLayout.LayoutBounds="0,0,1,1"
-            AbsoluteLayout.LayoutFlags="All"
-            Spacing="150"
-            Margin="400,360,0,0">
+            x:Name="Labels">
 
             <Label 
                 Text="{Binding Slack}"
@@ -31,7 +27,6 @@
                 Style="{DynamicResource Social-Username}" />
 
         </HorizontalStackLayout>
-
 
     </AbsoluteLayout>
 </ContentPage>
