@@ -2,7 +2,7 @@
 name: Practical Examples Demo
 fields:
   title:
-    value: "Demo: Edge in Use"
+    value: 'Demo: Edge in Use'
     type: ShortText
   subtitle:
     value: Walkthrough applications that use Edge

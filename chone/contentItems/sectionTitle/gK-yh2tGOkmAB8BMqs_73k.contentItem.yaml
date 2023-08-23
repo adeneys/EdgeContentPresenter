@@ -2,10 +2,10 @@
 name: Web API Demo
 fields:
   title:
-    value: "Demo: Web API"
+    value: 'Demo: Web API'
     type: ShortText
   subtitle:
-    value:
+    value: ''
     type: ShortText
   layout:
     value:

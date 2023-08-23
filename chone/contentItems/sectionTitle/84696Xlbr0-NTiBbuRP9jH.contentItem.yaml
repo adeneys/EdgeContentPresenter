@@ -2,7 +2,7 @@
 name: XM Schema Demo
 fields:
   title:
-    value: "Demo: XM Schema"
+    value: 'Demo: XM Schema'
     type: ShortText
   subtitle:
     value: Explore the GraphQL schema for XM tenants

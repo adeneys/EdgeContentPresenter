@@ -2,7 +2,7 @@
 name: CH-ONE Schema Demo
 fields:
   title:
-    value: "Demo: Content Hub ONE Schema"
+    value: 'Demo: Content Hub ONE Schema'
     type: ShortText
   subtitle:
     value: Explore the GraphQL schema for CH-ONE tenants

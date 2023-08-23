@@ -2,10 +2,10 @@
 name: GraphQL Demo
 fields:
   title:
-    value: "Demo: GraphQL"
+    value: 'Demo: GraphQL'
     type: ShortText
   subtitle:
-    value: 
+    value: ''
     type: ShortText
   layout:
     value:
