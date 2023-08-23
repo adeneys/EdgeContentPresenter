@@ -23,7 +23,12 @@ namespace EdgeContentPresenter.ContentSource
         private void ProcessElement(JsonElement element)
         {
             // .net MAUI on Windows is very limited in it's tag support: https://github.com/dotnet/maui/blob/main/src/Core/src/Platform/Windows/LabelHtmlHelper.cs
-            var type = element.GetProperty("type").GetString();
+            var type = string.Empty;
+            if(element.TryGetProperty("type", out var typeElement))
+            {
+                type = typeElement.GetString();
+            }
+
             switch(type)
             {
                 case "text":

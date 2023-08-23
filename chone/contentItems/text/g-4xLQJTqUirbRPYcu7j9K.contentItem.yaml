@@ -1,0 +1,61 @@
+﻿id: g-4xLQJTqUirbRPYcu7j9K
+name: Code References
+fields:
+  title:
+    value: Code References
+    type: ShortText
+  text:
+    value: >-
+      {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://www.github.com/adeneys/EdgeContentPresenter",
+                      "target": "_blank",
+                      "class": null
+                    }
+                  }
+                ],
+                "text": "https://www.github.com/adeneys/EdgeContentPresenter"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://www.github.com/adeneys/EdgeEleventyPresenter",
+                      "target": "_blank",
+                      "class": null
+                    }
+                  }
+                ],
+                "text": "https://www.github.com/adeneys/EdgeEleventyPresenter"
+              }
+            ]
+          }
+        ]
+      }
+    type: RichText
+  headerImage:
+    value:
+    - type: Link
+      relatedType: Media
+      id: jVdPsg1VMkCsqtU5fwYqhw
+    type: Media
+  images:
+    value: []
+    type: Media

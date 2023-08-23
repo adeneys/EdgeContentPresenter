@@ -18,7 +18,7 @@ fields:
                   {
                     "type": "link",
                     "attrs": {
-                      "href": "http://www.codeflood.net/blog/2022/12/20/experience-edge-schema-for-xm-tenants/",
+                      "href": "https://www.codeflood.net/blog/2022/12/20/experience-edge-schema-for-xm-tenants/",
                       "target": "_blank",
                       "class": null
                     }
@@ -37,7 +37,7 @@ fields:
                   {
                     "type": "link",
                     "attrs": {
-                      "href": "http://www.codeflood.net/blog/2023/05/23/experience-edge-schema-for-contenthub-tenants/",
+                      "href": "https://www.codeflood.net/blog/2023/05/23/experience-edge-schema-for-contenthub-tenants/",
                       "target": "_blank",
                       "class": null
                     }
@@ -56,7 +56,7 @@ fields:
                   {
                     "type": "link",
                     "attrs": {
-                      "href": "http://www.codeflood.net/blog/2023/07/18/experience-edge-schema-for-content-hub-one-tenants/",
+                      "href": "https://www.codeflood.net/blog/2023/07/18/experience-edge-schema-for-content-hub-one-tenants/",
                       "target": "_blank",
                       "class": null
                     }

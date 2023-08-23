@@ -4,4 +4,3 @@ Nice to have
 - App: align mastodon logo with text on bio page
 - App: Stretch header image entire width of page
 - App: Make margins on social page relative
-- App: Remove next/previous pages from model and rely on navigation instead

@@ -1,0 +1,19 @@
+﻿id: 8h5yh2tGOkmAB8BMqs_kdY
+name: CH-ONE Schema Demo
+fields:
+  title:
+    value: "Demo: Content Hub ONE Schema"
+    type: ShortText
+  subtitle:
+    value: Explore the GraphQL schema for CH-ONE tenants
+    type: ShortText
+  layout:
+    value:
+    - id: right
+    type: Select
+  backgroundImage:
+    value:
+    - type: Link
+      relatedType: Media
+      id: z9P8VS9ijkOpKx7GmZI_kA
+    type: Media
