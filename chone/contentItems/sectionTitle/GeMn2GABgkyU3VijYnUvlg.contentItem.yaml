@@ -5,7 +5,7 @@ fields:
     value: Thank You
     type: ShortText
   subtitle:
-    value: ''
+    value: 
     type: ShortText
   layout:
     value:
@@ -15,5 +15,5 @@ fields:
     value:
     - type: Link
       relatedType: Media
-      id: H8ptfxnQxkSVhGquZ30DXQ
+      id: XTNLq6y9fEeg_BPKnm56iw
     type: Media
