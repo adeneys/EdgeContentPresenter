@@ -113,6 +113,7 @@ namespace EdgeContentPresenter.ContentSource
             var result = Deserialize<TextContent>(contentElement, type);
             result.Text = ResolveRichText(contentElement, "text");
             result.PageHeaderImage = ResolveImages(contentElement, "headerImage").FirstOrDefault();
+            result.PageHeaderFillColor = ResolveColor(contentElement, "headerFillColor");
             result.Images = ResolveImages(contentElement, "images").AsReadOnly();
             return result;
         }
@@ -219,6 +220,18 @@ namespace EdgeContentPresenter.ContentSource
             }
 
             return null;
+        }
+
+        private Color ResolveColor(JsonElement element, string fieldName)
+        {
+            var colorElement = element.GetProperty(fieldName);
+            if(colorElement.ValueKind != JsonValueKind.Null && colorElement.ValueKind != JsonValueKind.Undefined)
+            {
+                Color.TryParse(colorElement.GetString(), out var color);
+                return color;
+            }
+
+            return Color.Parse("DarkGray");
         }
     }
 }
