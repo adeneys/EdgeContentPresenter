@@ -20,6 +20,8 @@ namespace EdgeContentPresenter.Model
 
         public EdgeImage PageHeaderImage { get; set; }
 
+        public Color PageHeaderFillColor { get; set; } = Color.Parse("DarkGray");
+
         public EdgeImage Image { get; set; }
     }
 }

@@ -104,6 +104,7 @@ namespace EdgeContentPresenter.ContentSource
             result.Highlights = ResolveRichText(contentElement, "highlights");
             result.Image = ResolveImages(contentElement, "profileImage").FirstOrDefault();
             result.PageHeaderImage = ResolveImages(contentElement, "headerImage").FirstOrDefault();
+            result.PageHeaderFillColor = ResolveColor(contentElement, "headerFillColor");
             return result;
         }
 
@@ -224,11 +225,13 @@ namespace EdgeContentPresenter.ContentSource
 
         private Color ResolveColor(JsonElement element, string fieldName)
         {
-            var colorElement = element.GetProperty(fieldName);
-            if(colorElement.ValueKind != JsonValueKind.Null && colorElement.ValueKind != JsonValueKind.Undefined)
+            if (element.TryGetProperty(fieldName, out var colorElement))
             {
-                Color.TryParse(colorElement.GetString(), out var color);
-                return color;
+                if (colorElement.ValueKind != JsonValueKind.Null && colorElement.ValueKind != JsonValueKind.Undefined)
+                {
+                    Color.TryParse(colorElement.GetString(), out var color);
+                    return color;
+                }
             }
 
             return Color.Parse("DarkGray");

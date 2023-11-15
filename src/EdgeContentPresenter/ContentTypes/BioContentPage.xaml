@@ -5,11 +5,22 @@
              Title="{Binding Title}"
              BackgroundColor="{DynamicResource White}">
 
-    <AbsoluteLayout>
-        <Image 
-            x:Name="headerImage"
-            Source="{Binding PageHeaderImage.Uri}"
-            Aspect="AspectFill" />
+    <VerticalStackLayout>
+        <AbsoluteLayout
+            BackgroundColor="{Binding PageHeaderFillColor}">
+
+            <Image 
+                x:Name="headerImage"
+                Source="{Binding PageHeaderImage.Uri}"
+                Aspect="AspectFill"
+                />
+
+            <Label 
+                Text="{Binding Title}"
+                Style="{DynamicResource Page-Title}"
+                Margin="20"
+                HorizontalOptions="Start" />
+        </AbsoluteLayout>
 
         <VerticalStackLayout
             Margin="25"
@@ -62,6 +73,6 @@
                 </VerticalStackLayout>
             </HorizontalStackLayout>
         </VerticalStackLayout>
-    </AbsoluteLayout>
+    </VerticalStackLayout>
 
 </ContentPage>
