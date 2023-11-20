@@ -14,6 +14,8 @@ The content for the application is managed in [Sitecore Content Hub ONE](https:/
 
 To import the content into a Content Hub ONE tenant, first [Install the Content Hub ONE CLI](https://doc.sitecore.com/ch-one/en/developers/content-hub-one/content-hub-one-cli--install-and-run-the-cli.html) and [Log in with the CLI](https://doc.sitecore.com/ch-one/en/developers/content-hub-one/content-hub-one-cli--log-in-with-the-cli.html). Now the `serialization` command can be used to push resources to Content Hub ONE. Execute the following command from the `chone` directory of the repository:
 
-	dotnet ch-one-cli serialization push content-type
-	dotnet ch-one-cli serialization push content-item
-	dotnet ch-one-cli serialization push media
+```
+dotnet ch-one-cli serialization push content-type
+dotnet ch-one-cli serialization push content-item
+dotnet ch-one-cli serialization push media
+```

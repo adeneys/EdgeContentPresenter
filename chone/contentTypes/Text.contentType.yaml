@@ -36,3 +36,11 @@ fields:
   helpText:
     en-US: The images to show on the page.
   reference: 
+- id: headerFillColor
+  name:
+    en-US: Header Fill Color
+  type: ShortText
+  required: false
+  helpText:
+    en-US: The color to fill the header background.
+  reference: 

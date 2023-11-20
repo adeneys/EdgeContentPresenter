@@ -9,6 +9,7 @@
     headerImage(first: 1) {
       ...mediaInfo
     }
+    headerFillColor
     profileImage(first: 1) {
       ...mediaInfo
     }

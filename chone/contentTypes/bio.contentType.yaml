@@ -52,6 +52,14 @@ fields:
   helpText:
     en-US: The header image to show on the page.
   reference: 
+- id: headerFillColor
+  name:
+    en-US: Header Fill Color
+  type: ShortText
+  required: false
+  helpText:
+    en-US: The color to fill the header background.
+  reference: 
 - id: profileImage
   name:
     en-US: Profile Image

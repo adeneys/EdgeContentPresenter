@@ -229,7 +229,11 @@ namespace EdgeContentPresenter.ContentSource
             {
                 if (colorElement.ValueKind != JsonValueKind.Null && colorElement.ValueKind != JsonValueKind.Undefined)
                 {
-                    Color.TryParse(colorElement.GetString(), out var color);
+                    var colorValue = colorElement.GetString();
+
+                    if (!Color.TryParse(colorValue, out var color))
+                        Color.FromArgb(colorValue);
+                    
                     return color;
                 }
             }

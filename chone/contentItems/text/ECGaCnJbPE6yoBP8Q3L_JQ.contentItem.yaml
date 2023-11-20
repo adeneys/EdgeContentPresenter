@@ -7,6 +7,9 @@ fields:
   text:
     value: '{}'
     type: RichText
+  headerFillColor:
+    value: '#4c444f'
+    type: ShortText
   headerImage:
     value:
     - type: Link

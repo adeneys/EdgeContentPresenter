@@ -96,6 +96,9 @@ fields:
   mastodon:
     value: '@adeneys@hachyderm.io'
     type: ShortText
+  headerFillColor:
+    value: '#4c444f'
+    type: ShortText
   headerImage:
     value:
     - type: Link

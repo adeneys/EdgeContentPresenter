@@ -6,6 +6,7 @@
     headerImage(first: 1) {
       ...mediaInfo
     }
+    headerFillColor
     images {
       ...mediaInfo
     }
