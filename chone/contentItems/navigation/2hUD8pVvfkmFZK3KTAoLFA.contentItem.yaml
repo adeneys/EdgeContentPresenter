@@ -1,0 +1,69 @@
+﻿id: 2hUD8pVvfkmFZK3KTAoLFA
+name: Primary Navigation mk2
+fields:
+  pages:
+    value:
+    - type: Link
+      relatedType: Content
+      id: hIU1K9sL3ECies8T1nVqug
+    - type: Link
+      relatedType: Content
+      id: Ifuxok0M8UmhdsU4hSAUkQ
+    - type: Link
+      relatedType: Content
+      id: OHocPB0DfUm8urk1cofOkQ
+    - type: Link
+      relatedType: Content
+      id: 65hm5eX0CUSc8NE9VM3QlQ
+    - type: Link
+      relatedType: Content
+      id: s3P7iZrTsU2Guk_LPYeBAA
+    - type: Link
+      relatedType: Content
+      id: jGyw5Xlbr0-NTiBbuRPW0w
+    - type: Link
+      relatedType: Content
+      id: gK-yh2tGOkmAB8BMqs_73k
+    - type: Link
+      relatedType: Content
+      id: s33Kkof6qkeLUsVrO7Bg8A
+    - type: Link
+      relatedType: Content
+      id: a1yp8VFYDkeJ0KH7q2GVEg
+    - type: Link
+      relatedType: Content
+      id: LezVDADwDkGdbQRAFy6ajQ
+    - type: Link
+      relatedType: Content
+      id: ECGaCnJbPE6yoBP8Q3L_JQ
+    - type: Link
+      relatedType: Content
+      id: 84696Xlbr0-NTiBbuRP9jH
+    - type: Link
+      relatedType: Content
+      id: JLGLkSFnjkeRXufimxT4wg
+    - type: Link
+      relatedType: Content
+      id: mjI9JiJshEmOjNYcjTDczA
+    - type: Link
+      relatedType: Content
+      id: HAKb2any40utPhMCP37Duw
+    - type: Link
+      relatedType: Content
+      id: 8h5yh2tGOkmAB8BMqs_kdY
+    - type: Link
+      relatedType: Content
+      id: Mj-96Xlbr0-NTiBbuRP62F
+    - type: Link
+      relatedType: Content
+      id: Kd-xLQJTqUirbRPYcu7Ywg
+    - type: Link
+      relatedType: Content
+      id: g-4xLQJTqUirbRPYcu7j9K
+    - type: Link
+      relatedType: Content
+      id: caZp73OwA0ekNNScOoip9g
+    - type: Link
+      relatedType: Content
+      id: GeMn2GABgkyU3VijYnUvlg
+    type: Reference

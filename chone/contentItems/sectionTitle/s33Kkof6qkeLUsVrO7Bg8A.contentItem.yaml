@@ -1,0 +1,19 @@
+﻿id: s33Kkof6qkeLUsVrO7Bg8A
+name: Data Models and GraphQL Schemas
+fields:
+  title:
+    value: Data Models and GraphQL Schemas
+    type: ShortText
+  subtitle:
+    value: GraphQL schemas to realize system data models
+    type: ShortText
+  layout:
+    value:
+    - id: right
+    type: Select
+  backgroundImage:
+    value:
+    - type: Link
+      relatedType: Media
+      id: QiMYpwDD-0mPT-JcLfngVQ
+    type: Media
