@@ -15,4 +15,11 @@ public partial class TextContentPage : ContentPage
     }
 
     public int MaximumImageWidth => ((TextContent)BindingContext).MaximumImageWidth;
+
+    protected override void OnSizeAllocated(double width, double height)
+    {
+        base.OnSizeAllocated(width, height);
+
+        headerImage.WidthRequest = width;
+    }
 }

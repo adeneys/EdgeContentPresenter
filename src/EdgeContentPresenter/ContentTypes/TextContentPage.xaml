@@ -15,7 +15,7 @@
         <Label 
             Text="{Binding Title}"
             Style="{DynamicResource Page-Title}"
-            Margin="20"
+            Margin="45"
             HorizontalOptions="Start" />
 
         <ScrollView 
@@ -25,9 +25,11 @@
             <VerticalStackLayout
                 Spacing="25"
                 Margin="25"
+                TranslationY="50"
                 VerticalOptions="Center">
 
                 <Label 
+                    x:Name="text"
                     Text="{Binding Text}"
                     TextType="Html"
                     Style="{DynamicResource Text-Text}" />

@@ -16,13 +16,14 @@
             AbsoluteLayout.LayoutFlags="All">
 
             <VerticalStackLayout
-                Margin="75"
+                Margin="100"
                 Spacing="25"
                 HorizontalOptions="End">
                 
                 <Label 
                     Text="{Binding Title}"
                     Style="{DynamicResource SectionTitle-Title}"
+                    Margin="0,130"
                     MaximumWidthRequest="900"
                     HorizontalOptions="End" />
 

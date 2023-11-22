@@ -16,9 +16,9 @@
             AbsoluteLayout.LayoutFlags="All">
 
             <VerticalStackLayout
-                Margin="20"
+                Margin="60"
                 Padding="50"
-                Spacing="15"
+                Spacing="50"
                 VerticalOptions="Center"
                 HorizontalOptions="Start"
                 MaximumWidthRequest="800">

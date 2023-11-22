@@ -12,7 +12,7 @@
             Aspect="AspectFill" />
 
         <VerticalStackLayout
-            Margin="25"
+            Margin="45"
             Spacing="25">
 
             <Label 
@@ -22,11 +22,19 @@
 
             <HorizontalStackLayout
                 HorizontalOptions="Center"
-                Margin="25">
+                Margin="50"
+                Spacing="50">
 
                 <Image 
                     Source="{Binding Image.Uri}"
-                    WidthRequest="500" />
+                    WidthRequest="500">
+                    <Image.Clip>
+                        <EllipseGeometry
+                            Center="250,250"
+                            RadiusX="250"
+                            RadiusY="250" />
+                    </Image.Clip>
+                </Image>
 
                 <VerticalStackLayout
                     VerticalOptions="Center" 

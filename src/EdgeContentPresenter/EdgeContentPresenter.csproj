@@ -101,6 +101,9 @@
 		<MauiXaml Update="ContentTypes\SectionSubtitlePageRight.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
+		<MauiXaml Update="ContentTypes\SectionSubtitlePageTopTitle.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="ContentTypes\SectionTitlePageLeft.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
