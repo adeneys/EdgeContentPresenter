@@ -89,6 +89,9 @@ namespace EdgeContentPresenter.ContentSource
             var contentElement = element.GetProperty("title");
             var result = Deserialize<TitleContent>(contentElement, type);
             result.BackgroundImage = ResolveImages(contentElement, "backgroundImage").FirstOrDefault();
+            
+            // Date is stored in CHONE at UTC. Need to convert it to local.
+            result.Date = result.Date.ToLocalTime();
 
             var hashtags = result.HashTags.Split(',', StringSplitOptions.RemoveEmptyEntries);
             if(hashtags.Any())
