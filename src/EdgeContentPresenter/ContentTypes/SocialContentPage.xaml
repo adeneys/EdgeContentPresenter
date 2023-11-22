@@ -12,19 +12,52 @@
             AbsoluteLayout.LayoutFlags="All" />
 
         <HorizontalStackLayout
+            Spacing="100"
             x:Name="Labels">
 
-            <Label 
-                Text="{Binding Slack}"
-                Style="{DynamicResource Social-Username}" />
+            <VerticalStackLayout
+                VerticalOptions="Fill"
+                >
+                <Image
+                    Source="slack_logo.png"
+                    Style="{DynamicResource Social-Icon}" />
+                
+                <Label 
+                    Text="{Binding Slack}"
+                    Style="{DynamicResource Social-Username}" />
 
-            <Label 
-                Text="{Binding Mastodon}"
-                Style="{DynamicResource Social-Username}" />
+                <Label
+                    Text="sitecorechat.slack.com"
+                    Style="{DynamicResource Social-Detail}" />
+            </VerticalStackLayout>
 
-            <Label 
-                Text="{Binding StackExchange}"
-                Style="{DynamicResource Social-Username}" />
+            <VerticalStackLayout>
+                <Image
+                    Source="mastodon_logo.png"
+                    Style="{DynamicResource Social-Icon}" />
+                
+                <Label 
+                    Text="{Binding Mastodon}"
+                    Style="{DynamicResource Social-Username}" />
+
+                <Label
+                    Text="mastodon"
+                    Style="{DynamicResource Social-Detail}" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout>
+                <Image
+                    Source="stack_exchange_logo.png"
+                    Style="{DynamicResource Social-Icon}" />
+                
+                <Label 
+                    Text="{Binding StackExchange}"
+                    Style="{DynamicResource Social-Username}" />
+
+                <Label
+                    Text="sitecore.stackexchange.com"
+                    Style="{DynamicResource Social-Detail}" />
+            </VerticalStackLayout>
 
         </HorizontalStackLayout>
 

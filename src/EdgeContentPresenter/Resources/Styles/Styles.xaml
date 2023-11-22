@@ -168,6 +168,13 @@
         <Setter Property="Margin" Value="0,0,15,0" />
     </Style>
 
+    <Style TargetType="Image" x:Key="Social-Icon">
+        <Setter Property="WidthRequest" Value="76" />
+        <Setter Property="Margin" Value="25" />
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="Aspect" Value="AspectFit"/>
+    </Style>
+
     <Style TargetType="Label" x:Key="Title-Title">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkGray}, Dark={StaticResource DarkGray}}" />
         <Setter Property="FontFamily" Value="MULI ROMAN" />
@@ -248,9 +255,17 @@
     </Style>
 
     <Style TargetType="Label" x:Key="Social-Username">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkGray}, Dark={StaticResource DarkGray}}" />
         <Setter Property="FontFamily" Value="MULI ROMAN" />
-        <Setter Property="FontSize" Value="28" />
+        <Setter Property="FontSize" Value="38" />
+        <Setter Property="HorizontalOptions" Value="Center"/>
+    </Style>
+
+    <Style TargetType="Label" x:Key="Social-Detail">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource DarkGray}, Dark={StaticResource DarkGray}}" />
+        <Setter Property="FontFamily" Value="MULI ROMAN" />
+        <Setter Property="FontSize" Value="26" />
+        <Setter Property="HorizontalOptions" Value="Center"/>
     </Style>
 
     <Style TargetType="ListView">

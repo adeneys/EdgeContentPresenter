@@ -10,8 +10,7 @@ public partial class SocialContentPage : ContentPage
     protected override void OnSizeAllocated(double width, double height)
     {
         base.OnSizeAllocated(width, height);
-        Labels.TranslationX = width * 0.22;
-        Labels.TranslationY = height * 0.61;
-        Labels.Spacing = width * 0.08;
+        Labels.TranslationX = (width - Labels.Width) * 0.5;
+        Labels.TranslationY = (height - Labels.Height) * 0.4;
     }
 }
