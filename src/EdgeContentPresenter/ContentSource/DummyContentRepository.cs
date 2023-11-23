@@ -11,21 +11,39 @@ namespace EdgeContentPresenter.ContentSource
                 Identifier = "page1",
                 Type = "Text",
                 Title = "Page 1",
-                Text = "This is some text one"
+                Text = "This is some text one",
+                PageHeaderImage = new EdgeImage
+                {
+                    Uri = new Uri("http://localhost:8090/slide-header.jpg"),
+                    Width = 1279,
+                    Height = 96
+                }
             },
             new TextContent
             {
                 Identifier = "page2",
                 Type = "Text",
                 Title = "Page 2",
-                Text = "This is some text two"
+                Text = "This is some text two",
+                 PageHeaderImage = new EdgeImage
+                {
+                    Uri = new Uri("http://localhost:8090/slide-header.jpg"),
+                    Width = 1279,
+                    Height = 96
+                }
             },
             new TextContent
             {
                 Identifier = "page3",
                 Type = "Text",
                 Title = "Page 3",
-                Text = "This is some text three"
+                Text = "This is some text three",
+                 PageHeaderImage = new EdgeImage
+                {
+                    Uri = new Uri("http://localhost:8090/slide-header.jpg"),
+                    Width = 1279,
+                    Height = 96
+                }
             }
         };
 
